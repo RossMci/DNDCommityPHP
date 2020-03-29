@@ -40,18 +40,11 @@ class campaigns_db {
         $Players =$campaign->getPlayers();
         $CampaignsNo =$campaign->getCampaignsNo();
         $CimageLink =$campaign->getCimageLink();
-//        $memberID=$member->getmemberID(); 
         $query = 'INSERT INTO campaigns
                        ( CTitle, CDescription, CVenue, CDate, CTime, CLocation ,Players,CampaignsNo,CimageLink)
                   VALUES
                         ( :CTitle, :CDescription, :CVenue, :CDate, :CTime, :CLocation ,:Players,:CampaignsNo, :CimageLink)';
-//        $query  .='INSERT INTO campaigndetails
-//                       (memberID,campaignID)
-//                  VALUES
-//                        ( :memberID,:campaignID)';
-//                
         $statement = $db->prepare($query);
-//        $statement->bindValue(':memberID',$memberID);
         $statement->bindValue(':CTitle', $CTitle);
         $statement->bindValue(':CLocation', $CLocation);
         $statement->bindValue(':CDescription', $CDescription);
