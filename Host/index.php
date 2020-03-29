@@ -3,6 +3,8 @@
 require('../Model/database.php');
 require('../Model/CampaignsClass.php');
 require('../Model/campaigns_db.php');
+require('../Model/member.php');
+require('../Model/member_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -43,4 +45,6 @@ if ($action == 'add_edit_campaign_form') {
         campaigns_db::createCampaign($campaign);
         header("Location: /DNDCommityPHP/Host/index.php");
     }
+}else if ($action=='currentCampaigns' ) {
+    
 }

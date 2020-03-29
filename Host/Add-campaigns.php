@@ -43,7 +43,7 @@ if (isset($event_id)) {
             </div>
 
             <div id="logo">
-                <a href="index.html">
+                <a href="../index.php">
                     <img src="../images/dndlogo3.png" alt="dndlogo">
                 </a>
                 <h3>COMMUNITY </h3>
@@ -72,7 +72,7 @@ if (isset($event_id)) {
                             <?php endif; ?>  
                         <H3> Drag and Drop Image</H3>
                         <p>or</p>
-                         <input type="file" name="CimageLink"  accept="image/*">
+                         <input type="file" name="CimageLink" accept="image/*">
                          <p><?php/ echo $campaign['CimageLink']; ?></p>
                   
                 </div>
