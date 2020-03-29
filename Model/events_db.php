@@ -74,7 +74,7 @@ class events_db {
 	public static function update_event($event_id, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink) {
 		$db = Database::getDB();
 		$query = 'UPDATE event
-              SET   eventID = :event_id,
+              SET eventID = :event_id,
                   $Title = :Title,
                   $Description = :Description,
                   $Venue = :Venue,
@@ -84,7 +84,7 @@ class events_db {
                   $imageLink= :imageLink,
                  WHERE eventID= :event_id';
 		try {
-			$statement = $db->prepare($query);
+				$statement = $db->prepare($query);
 			$statement->bindValue(':Title', $Title);
 			$statement->bindValue(':Location', $Location);
 			$statement->bindValue(':Description', $Description);
