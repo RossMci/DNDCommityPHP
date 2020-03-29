@@ -22,7 +22,7 @@ class campaigns_db {
 
         $Campaigns = array();
         foreach ($statement as $row) {
-            $campaign = new campaigns($row['campaignID'], $row['CTitle'], $row['CDescription'], $row['CVenue'], $row['CDate'], $row['CTime'], $row['CLocation'], $row['Players'], $row['CampaignsNo'], $row['CimageLink']);
+            $campaign = new CampaignsClass($row['campaignID'], $row['CTitle'], $row['CDescription'], $row['CVenue'], $row['CDate'], $row['CTime'], $row['CLocation'], $row['Players'], $row['CampaignsNo'], $row['CimageLink']);
 
             $Campaigns[] = $campaign;
         }
@@ -44,10 +44,6 @@ class campaigns_db {
                        ( CTitle, CDescription, CVenue, CDate, CTime, CLocation ,Players,CampaignsNo,CimageLink)
                   VALUES
                         ( :CTitle, :CDescription, :CVenue, :CDate, :CTime, :CLocation ,:Players,:CampaignsNo, :CimageLink)';
-//        $query .= 'INSERT INTO campaignDetails
-//                       ( CTitle, CDescription, CVenue, CDate, CTime, CLocation ,Players,CampaignsNo,CimageLink)
-//                  VALUES
-//                        ( :CTitle, :CDescription, :CVenue, :CDate, :CTime, :CLocation ,:Players,:CampaignsNo, :CimageLink)';
         $statement = $db->prepare($query);
         $statement->bindValue(':CTitle', $CTitle);
         $statement->bindValue(':CLocation', $CLocation);
@@ -58,6 +54,16 @@ class campaigns_db {
         $statement->bindValue(':Players', $Players);
         $statement->bindValue(':CampaignsNo', $CampaignsNo);
         $statement->bindValue(':CimageLink', $CimageLink);
+        $statement->execute();
+        $statement->closeCursor();
+    }
+    
+         public static function DeleteCampaign($campaign_id) {
+        $db = Database::getDB();
+        $query = 'DELETE FROM campaigns
+                  WHERE campaignID = :campaign_id';
+        $statement = $db->prepare($query);
+        $statement->bindValue(':campaign_id', $campaign_id);
         $statement->execute();
         $statement->closeCursor();
     }

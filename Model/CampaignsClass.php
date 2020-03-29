@@ -15,7 +15,7 @@ class CampaignsClass {
 
     private $campaignID, $CTitle, $CDescription, $CVenue, $CDate, $CTime, $CLocation, $Players, $CampaignsNo,$CimageLink;
     
-        public function campaigns($campaignID, $CTitle, $CDescription, $CVenue, $CDate, $CTime, $CLocation ,$Players,$campaignsNo,$CimageLink) {
+        public function CampaignsClass($campaignID, $CTitle, $CDescription, $CVenue, $CDate, $CTime, $CLocation ,$Players,$CampaignsNo,$CimageLink) {
         $this->campaignID = $campaignID;
         $this->CTitle = $CTitle;
         $this->CDescription = $CDescription;
@@ -24,7 +24,7 @@ class CampaignsClass {
         $this->CTime = $CTime;
         $this->CLocation = $CLocation;
         $this->Players = $Players;
-        $this->campaignsNo = $campaignsNo;
+        $this->CampaignsNo = $CampaignsNo;
         $this->CimageLink=$CimageLink;
         
     }
@@ -77,7 +77,7 @@ class CampaignsClass {
         $this->CTime = $value;
     }
 
-    function getLocation() {
+    function getCLocation() {
         return $this->CLocation;
     }
 

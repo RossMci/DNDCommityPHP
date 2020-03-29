@@ -34,12 +34,12 @@ if ($action == 'add_edit_campaign_form') {
     $Players = filter_input(INPUT_POST, 'Players');
     $CampaignsNo = filter_input(INPUT_POST, 'CampaignsNo');
     $CimageLink = filter_input(INPUT_POST, 'CimageLink');
- if ($CTitle == NULL || $CDescription == NULL || $CVenue == NULL || $CDate == NULL || $CTime == NULL || $CLocation == NULL|| $Players == NULL || $CampaignsNo == NULL) {
+ if ($CTitle == NULL || $CDescription == NULL || $CVenue == NULL || $CDate == NULL || $CTime == NULL || $CLocation == NULL|| $Players == NULL || $CampaignsNo == NULL ) {
         $error = "Invalid user data. Check all fields and try again.";
         include('../errors/error.php');
     } else {
 
-       $campaign= new campaigns($campaignID, $CTitle, $CDescription, $CVenue, $CDate, $CTime, $CLocation ,$Players,$campaignsNo,$CimageLink);
+       $campaign= new CampaignsClass($campaignID, $CTitle, $CDescription, $CVenue, $CDate, $CTime, $CLocation ,$Players,$CampaignsNo,$CimageLink);
         campaigns_db::createCampaign($campaign);
         header("Location: /DNDCommityPHP/Host/index.php");
     }

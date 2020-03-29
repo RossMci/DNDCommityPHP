@@ -64,22 +64,22 @@ if (isset($event_id)) {
             <div id="campaign-detialsPage">
                 <div id="imageupload">
                    <form id="event-edit" action="index.php" method="post" enctype="multipart/form-data">
-                   
+                   <?php if (isset($campaign_id)) : ?>
+                                <input type="hidden" name="action" value="update_Campaign" />
+                                <input type="hidden" name="campaign_id" value="<?php echo $campaign_id; ?>" />
+                            <?php else: ?>
+                                <input type="hidden" name="action" value="createCampaign" />
+                            <?php endif; ?>  
                         <H3> Drag and Drop Image</H3>
                         <p>or</p>
                          <input type="file" name="CimageLink"  accept="image/*">
-<!--                         <p><?php // echo $event['CimageLink']; ?></p>-->
+                         <p><?php/ echo $campaign['CimageLink']; ?></p>
                   
                 </div>
                 
                 <hr>
                 <div class="form-contentcamd">
-                             <?php if (isset($campaign_id)) : ?>
-                                <input type="hidden" name="action" value="update_Campaign" />
-                                <input type="hidden" name="campaign_id" value="<?php echo $campaign_id; ?>" />
-                            <?php else: ?>
-                                <input type="hidden" name="action" value="createCampaign" />
-                            <?php endif; ?>   
+              
                             <h3><?php echo $heading_text; ?></h3>
                         <div class="row8">
                             <div class="col-25">
@@ -152,7 +152,7 @@ if (isset($event_id)) {
                                 <label>CampaignsNO</label>
                             </div>
                             <div class="col-75">
-                                <input type="text" name="CampaignsNo" placeholder="Enter campaignsNo">
+                                <input type="text" name="CampaignsNo" placeholder="Enter CampaignsNo">
                             </div>
                         </div>
                         <div id="add-event">
