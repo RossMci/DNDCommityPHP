@@ -85,8 +85,8 @@
                                     <td><?php echo $event->getTitle(); ?></td>
                                     <td><?php echo $event->getDescription(); ?></td>
                                     <td><?php echo $event->getVenue(); ?></td>
-                                    <td><?php echo $event->getEDate(); ?></td>
-                                    <td><?php echo $event->getETime(); ?></td>
+                                    <td><?php echo $event->getDate(); ?></td>
+                                    <td><?php echo $event->getTime(); ?></td>
                                     <td><?php echo $event->getLocation(); ?></td>
                                     <td><?php echo $event->getimageLink(); ?></td>
 
@@ -113,7 +113,7 @@
 <?php endforeach; ?>
                         </table>
 
-                        <button onclick="window.location.href = '../Events/addEvent.php';" type="button"><span> Add a Event</span></button>
+                        <button onclick="window.location.href = '../Events/index.php';" type="button"><span> Add a Event</span></button>
                     </div>
 
                 </div>

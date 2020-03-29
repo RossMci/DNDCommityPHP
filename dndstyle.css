@@ -189,7 +189,7 @@ header input[type="text"] {
 
 /*-----------------------------------------create member--------------------------------------*/
 
-.form input {
+.form input[type="text"] {
     border-bottom: 1px solid #fff;
     margin-bottom: 5px;
     margin-top: 5px;
@@ -200,7 +200,7 @@ header input[type="text"] {
 
 }
 
-.form input[type="submit"]{
+.form button {
     border-radius: 5px;
     width: 400px;
     padding: 10px;

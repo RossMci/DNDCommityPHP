@@ -13,9 +13,9 @@
  */
 class events {
 
-    private $eventID,$Title, $Description, $Venue, $Date, $Time, $Location,$imageLink;
+    private $eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink;
 
-    public function events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location , $imageLink) {
+    public function events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink) {
         $this->eventID = $eventID;
         $this->Title = $Title;
         $this->Description = $Description;

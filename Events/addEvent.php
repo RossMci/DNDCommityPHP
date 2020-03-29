@@ -75,8 +75,8 @@ if (isset($event_id)) {
                                     <label><?php echo $image_Link; ?></label>
                                 </div>   
                                 <div id="imageupload upload-form" class="col-75">
-                                    <!--                                    <form></form>-->
-                                    <input type="file" name="imageLink"  accept="image/*">
+
+                                    <input type="file" name="imageLink">
                                     <p><?php echo $event['imageLink']; ?></p>
 
                                 </div>

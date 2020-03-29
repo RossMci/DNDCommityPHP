@@ -30,7 +30,7 @@
                         <span id="user_name_error"></span><br>
 
                         <p><label for="phone_number">Phone Number:</label></p>
-                        <input type="number" id="phone_number" name="PhoneNumber" placeholder="Enter Phone Number">
+                        <input type="text" id="phone_number" name="PhoneNumber" placeholder="Enter Phone Number">
                         <span id="phone_number_error"></span><br>
 
                         <p><label for="email1">Email:</label></p>

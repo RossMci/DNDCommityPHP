@@ -1,3 +1,4 @@
+
 <?php
 
 require('../Model/database.php');
@@ -12,8 +13,6 @@ if ($action == NULL) {
     }
 }
 
-
-
 if ($action == 'add_edit_event_form') {
     $event_id = filter_input(INPUT_GET, 'event_id');
 
@@ -23,21 +22,20 @@ if ($action == 'add_edit_event_form') {
     $event = events_db::getEvent($event_id);
 
     include('addEvent.php');
-} else if($action == 'update_event'){
-     $event_id = filter_input(INPUT_POST, 'event_id', 
-            FILTER_VALIDATE_INT);
+} else if ($action == 'update_event') {
+    $event_id = filter_input(INPUT_POST, 'event_id', FILTER_VALIDATE_INT);
     $Title = filter_input(INPUT_POST, 'Title');
     $Description = filter_input(INPUT_POST, 'Description');
     $Venue = filter_input(INPUT_POST, 'Venue');
     $Date = filter_input(INPUT_POST, 'Date');
     $Time = filter_input(INPUT_POST, 'Time');
     $Location = filter_input(INPUT_POST, 'Location');
-    $imageLink = filter_input(INPUT_POST, 'imageLink');
-           
-    events_db::update_event($event_id,$Title, $Description, $Venue, $Date, $Time, $Location, $imageLink);
+//    $imageLink = filter_input(INPUT_POST, 'imageLink');
+	 $imageLink = $_FILES["imageLink"]["name"];
+
+    events_db::update_event($event_id, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink);
     header("Location: ../Admin/index.php?action=viewEvents");
-    
-}else if ($action == 'createEvent') {
+} else if ($action == 'createEvent') {
     $eventID = filter_input(INPUT_POST, 'eventID');
     $Title = filter_input(INPUT_POST, 'Title');
     $Description = filter_input(INPUT_POST, 'Description');
@@ -45,39 +43,10 @@ if ($action == 'add_edit_event_form') {
     $Date = filter_input(INPUT_POST, 'Date');
     $Time = filter_input(INPUT_POST, 'Time');
     $Location = filter_input(INPUT_POST, 'Location');
-    $imageLink = filter_input(INPUT_POST, 'imageLink');
-//    $imageLink = $_FILES['imageLink'];
-//
-//    $fileName = $_FILES['imageLink']['name'];
-//    $fileTmpName = $_FILES['imageLink']['tmp_name'];
-//    $fileSize = $_FILES['imageLink']['Size'];
-//    $fileError = $_FILES['imageLink']['error'];
-//    $fileType = $_FILES['imageLink']['type'];
-//
-//    $fileExt = explode('.', $fileName);
-//    $fileActualExt = strtolower(end($fileExt));
-//
-//    $allowed = array('jpg', 'jpeg', 'png');
-//    if (in_array($fileActualExt, $allowed)) {
-//        if ($fileError === 0) {
-//            if ($fileSize < 1000000) {
-//                $fileNameNew= uniqid('',true).".".$fileActualExt;
-//                $fileDestination= '../images/'.$fileNameNew;
-//                move_uploaded_file($fileTmpName,  $fileDestination);
-//            } else {
-//                $error = "Your file is too big!";
-//                include('../errors/error.php');
-//            }
-//        } else {
-//            $error = "There was an error uploading your file!";
-//            include('../errors/error.php');
-//        }
-//    } else {
-//        $error = "You cannot Upload files of this type!";
-//        include('../errors/error.php');
-//    }
-
-
+    //$imageLink = filter_input(INPUT, 'imageLink');
+    $imageLink = $_FILES["imageLink"]["name"];
+  
+  
     if ($Title == NULL || $Description == NULL || $Venue == NULL || $Date == NULL || $Time == NULL || $Location == NULL || $imageLink == NULL) {
         $error = "Invalid user data. Check all fields and try again.";
         include('../errors/error.php');
@@ -85,7 +54,7 @@ if ($action == 'add_edit_event_form') {
 
         $event = new events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink);
         events_db::createEvent($event);
-        header("Location: /DNDCommityPHP/Events/index.php");
+       header("Location: /DNDCommityPHP/Events/index.php");
     }
 }
 ?>
