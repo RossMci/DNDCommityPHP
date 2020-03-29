@@ -29,11 +29,11 @@
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                 <a href="member-account-detials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
                                 <a href="../Character/characterSheetCreation.php">Character sheets</a>
-                                <a href="../Campaigns/campaigns.php">Campaigns</a>
-                                <a href="joined-campaigns.php"> Joined Campaigns</a>
+<!--                                <a href="../Campaigns/campaigns.php">Campaigns</a>
+                                <a href="joined-campaigns.php"> Joined Campaigns</a>-->
                                 <a href="../Events/events.php"> Club Events</a>
-                                <a href="../Host/Add-campaigns.php">Add campaign </a>
-                                <a href="../Host/host-current-campaigns.php">current-campaign</a>
+<!--                                <a href="../Host/Add-campaigns.php">Add campaign </a>
+                                <a href="../Host/host-current-campaigns.php">current-campaign</a>-->
 
                             </div>  
                         </div>
@@ -98,7 +98,7 @@
                                     <input type="hidden" name="member_id"
                                            value="1">
 
-                                    <input type="submit" value="Update">
+                                    <input type="submit" value="save">
                                 </form>                        </div>
                             <div class="button-container">
                                 <button onclick="window.location.href = 'index.html';" type="button" class="cancelbtn-account "><span>Cancel</span></button>

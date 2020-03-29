@@ -21,8 +21,9 @@ if ($action == 'add_edit_event_form') {
     }
     $event = events_db::getEvent($event_id);
 
-    include('addEvent.php');
+	    include('addEvent.php');
 } else if ($action == 'update_event') {
+	
     $event_id = filter_input(INPUT_POST, 'event_id', FILTER_VALIDATE_INT);
     $Title = filter_input(INPUT_POST, 'Title');
     $Description = filter_input(INPUT_POST, 'Description');

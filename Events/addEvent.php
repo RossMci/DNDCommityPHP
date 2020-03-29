@@ -1,10 +1,10 @@
 <?php
 if (isset($event_id)) {
-    $heading_text = 'Edit Event';
-    $image_Link = ' Upload a different image';
+	$heading_text = 'Edit Event';
+	$image_Link = ' Upload a different image';
 } else {
-    $heading_text = 'Add Event';
-    $image_Link = 'Upload an image';
+	$heading_text = 'Add Event';
+	$image_Link = 'Upload an image';
 }
 ?>
 
@@ -31,8 +31,8 @@ if (isset($event_id)) {
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="../admin/managentdetials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
-                        <a href="campaign-admin.php">campaign details</a>
-                        <a href="../Campaigns/campaigns.php"> campaigns</a>
+						<!--                        <a href="campaign-admin.php">campaign details</a>
+												<a href="../Campaigns/campaigns.php"> campaigns</a>-->
                         <a href="../Admin/index.php?action=viewEvents">current events</a>
                         <a href="../Events/addEvent.php">Add event</a>
                         <a href="../Events/events.php">Events</a>
@@ -63,12 +63,12 @@ if (isset($event_id)) {
                     <hr>
                     <div class="form-contentcamd">
                         <form id="event-edit" action="index.php" method="post" enctype="multipart/form-data">
-                            <?php if (isset($event_id)) : ?>
-                                <input type="hidden" name="action" value="update_event" />
-                                <input type="hidden" name="event_id" value="<?php echo $event_id; ?>" />
-                            <?php else: ?>
-                                <input type="hidden" name="action" value="createEvent" />
-                            <?php endif; ?>   
+							<?php if (isset($event_id)) : ?>
+								<input type="hidden" name="action" value="update_event" />
+								<input type="hidden" name="event_id" value="<?php echo $event_id; ?>" />
+							<?php else: ?>
+								<input type="hidden" name="action" value="createEvent" />
+							<?php endif; ?>   
                             <h3><?php echo $heading_text; ?></h3>
                             <div class="row8">
                                 <div class="col-25">
@@ -134,7 +134,7 @@ if (isset($event_id)) {
                                 </div>
                             </div>
                             <div id="add-event">
-                                <input type="submit" value="Create Event">
+                                <input class="btn2"  type="submit" value="Save">
                                 <button class="btn2" onclick="window.location.href = 'index.html';" type="submit" value="Join">cancel</button>
                             </div>
 

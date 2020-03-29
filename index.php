@@ -29,7 +29,8 @@
                             <a href="member/index.php">Sign up</a>
                             <a href="Login/Login.php">Login</a>
                             <a href="Events/events.php"> Club Events</a>
-                            <a href="Campaigns/campaigns.php"> Campaigns</a>
+							<a href="Character/characterSheetCreation.php">Character sheets</a>
+<!--                            <a href="Campaigns/campaigns.php"> Campaigns</a>-->
 <!--                            <a href="member/joined-campaigns.php"> Joined Campaigns</a>-->
                         </div>
                     </div>

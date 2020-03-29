@@ -63,11 +63,11 @@
 
             <div id="managment-login">
                 <form class="form" name="email_form" action="thanks.html" method="get">
-
+                    <input type="hidden" name="action" value="login">
                     <i class="fa fa-user-circle" id="usericon-details"></i>
 
                     <p><label for="user_name">Admin verification code</label></p>
-                    <input type="password" id="user_name" name="user_name" placeholder="Enter Admin verification code">
+                    <input type="password" id="user_name" name="verification code" placeholder="Enter Admin verification code">
                     <span id="user_name_error"></span><br>
 
                     <p><label for="user_name">User name</label></p>
@@ -77,7 +77,7 @@
                     <p><label for="password1">password</label></p>
                     <input type="password" id="password1" name="password1" placeholder="Enter Password">
                     <span id="password1_error"></span><br>
-
+			        <p><?php echo $login_message; ?></p>
                     <div class="same-line">
                         <div class="button-container">
 <!--                            <button type="submit" name="submit" id="submit" value="submit"><span>Login</span></button>-->
