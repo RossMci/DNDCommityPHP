@@ -1,6 +1,6 @@
 <?php
 //    require_once('util/secure_conn.php');  // require a secure connection
-       require_once('../util/valid_admin.php');
+//       require_once('../util/valid_admin.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,20 +13,14 @@
             <h1>DNDcommunity</h1>
         </header>
         <main>
-            <h1>Login</h1>
+            <h1>add admin</h1>
 
             <form action="../Login/index.php" method="post">
                 <input type="hidden" name="action" value="add_admin">
 
-                <label>Email:</label>
+                <label>User Name:</label>
                 <input type="text" class="text" name="user_name">
                 <br>
-				
-				
-                <label>Password:</label>
-                <input type="password" class="text" name="verificationCode">
-                <br>
-
                 <label>Password:</label>
                 <input type="password" class="text" name="password">
                 <br>

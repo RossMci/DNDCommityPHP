@@ -1,5 +1,7 @@
 
-<?php ?>
+<?php 
+require_once('../util/valid_admin.php');
+?>
 <!DOCTYPE HTML>
 <html lang=en>
 

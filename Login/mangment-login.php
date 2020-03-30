@@ -1,11 +1,5 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 ?>
 <!DOCTYPE HTML>
 <html lang= en> 
@@ -62,22 +56,17 @@
         <div id="main">
 
             <div id="managment-login">
-                <form class="form" name="email_form" action="index.php" method="get">
+                <form class="form" name="email_form" action="index.php" method="POST">
                     <input type="hidden" name="action" value="login">
                     <i class="fa fa-user-circle" id="usericon-details"></i>
-
-                    <p><label for="user_name">Admin verification code</label></p>
-                    <input type="password" id="user_name" name="verificationCode" placeholder="Enter Admin verification code">
-                    <span id="user_name_error"></span><br>
-
                     <p><label for="user_name">User name</label></p>
                     <input type="text" id="user_name" name="user_name" placeholder="Enter User Name">
                     <span id="user_name_error"></span><br>
 
                     <p><label for="password1">password</label></p>
-                    <input type="password" id="password1" name="password1" placeholder="Enter Password">
+                    <input type="password" id="password1" name="password" placeholder="Enter Password">
                     <span id="password1_error"></span><br>
-<!--			        <p><?php// echo $login_message; ?></p>-->
+		        <p><?php echo $login_message; ?></p>
                     <div class="same-line">
                         <div class="button-container">
 <!--                            <button type="submit" name="submit" id="submit" value="submit"><span>Login</span></button>-->

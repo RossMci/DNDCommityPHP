@@ -1,6 +1,6 @@
 <?php
     // make sure the user is logged in as a valid administrator
     if (!isset($_SESSION['is_valid_admin'])) {
-        header("Location: ../Login/mangment-login.php" );
+        header("Location: ../Login/index.php" );
     }
 ?>

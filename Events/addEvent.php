@@ -6,6 +6,8 @@ if (isset($event_id)) {
 	$heading_text = 'Add Event';
 	$image_Link = 'Upload an image';
 }
+
+require_once('../util/valid_admin.php');
 ?>
 
 <!DOCTYPE HTML>
