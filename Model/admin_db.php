@@ -15,16 +15,17 @@ function add_admin($user_name, $password,$firstname, $lastname,$verificationCode
     $statement->closeCursor();
 }
 
-function is_valid_admin_login($email, $password) {
+function is_valid_admin_login($user_name, $password,$verificationCode) {
     global $db;
-    $query = 'SELECT password FROM redvallyadmin 
-              WHERE emailAddress = :email';
+    $query = 'SELECT password FROM dndAdmin
+              WHERE user_name= :user_name';
     $statement = $db->prepare($query);
-    $statement->bindValue(':email', $email);
+    $statement->bindValue(':user_name', $user_name);
     $statement->execute();
     $row = $statement->fetch();
     $statement->closeCursor();
     $hash = $row['password'];
-    return password_verify($password, $hash);
+	$hashCode=$row['verificationCode'];
+    return password_verify($password, $hash)&&password_verify($verificationCode, $hashCode);
 }
 ?>
