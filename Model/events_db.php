@@ -17,7 +17,9 @@ class events_db {
 	}
 
 	protected static function Transform($row): events {
-		return new events($row['eventID'], $row['Title'], $row['Description'], $row['Date'], $row['Venue'], $row['Time'], $row['Location'], $row['imageLink']);
+		$event = new events($row['eventID'], $row['Title'], $row['Description'], $row['Date'], $row['Venue'], $row['Time'], $row['Location'], $row['imageLink']);
+		$event->setImageData($row['imageData']);
+		return $event;
 	}
 
 	public static function getEventById($event_id) {
@@ -40,12 +42,12 @@ class events_db {
 		$Date = $event->getDate();
 		$Time = $event->getTime();
 		$Location = $event->getLocation();
-		$imageLink = $event->getimageLink();
+		//$imageLink = $event->getimageLink();
+		//$imageData = $event->getimageData();
 		$query = 'INSERT INTO event 
-                 (Title, Description, Venue, Date, Time, Location, imageLink)
+                 (Title, Description, Venue, Date, Time, Location, imageLink,imageData)
                  VALUES
-                 (:Title, :Description, :Venue, :Date, :Time, :Location,:imageLink )';
-
+                 (:Title, :Description, :Venue, :Date, :Time, :Location,:imageLink,:imageData )';
 
 		$statement = $db->prepare($query);
 		$statement->bindValue(':Title', $Title);
@@ -54,7 +56,8 @@ class events_db {
 		$statement->bindValue(':Venue', $Venue);
 		$statement->bindValue(':Date', $Date);
 		$statement->bindValue(':Time', $Time);
-		$statement->bindValue(':imageLink', $imageLink);
+		$statement->bindValue(':imageLink', $event->getimageLink());
+		$statement->bindValue(':imageData', $event->getimageData(), pdo::PARAM_LOB);
 
 
 

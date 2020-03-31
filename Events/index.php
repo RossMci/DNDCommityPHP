@@ -45,15 +45,43 @@ if ($action == 'add_edit_event_form') {
     $Time = filter_input(INPUT_POST, 'Time');
     $Location = filter_input(INPUT_POST, 'Location');
     //$imageLink = filter_input(INPUT, 'imageLink');
-    $imageLink = $_FILES["imageLink"]["name"];
-  
-  
+      $imageLink = $_FILES['imageLink'];
+
+    $fileName = $_FILES['imageLink']['name'];
+    $fileTmpName = $_FILES['imageLink']['tmp_name'];
+    $fileSize = $_FILES['imageLink']['size'];
+    $fileError = $_FILES['imageLink']['error'];
+    $fileType = $_FILES['imageLink']['type'];
+
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+	
     if ($Title == NULL || $Description == NULL || $Venue == NULL || $Date == NULL || $Time == NULL || $Location == NULL || $imageLink == NULL) {
         $error = "Invalid user data. Check all fields and try again.";
         include('../errors/error.php');
     } else {
 
-        $event = new events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink);
+        $event = new events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $fileName);
+		   $allowed = array('jpg', 'jpeg', 'png');
+    if (in_array($fileActualExt, $allowed)) {
+        if ($fileError === 0) {
+            if ($fileSize < 1000000) {
+                $fileNameNew= uniqid('',true).".".$fileActualExt;
+                $fileDestination= '../images/'.$fileNameNew;
+//                move_uploaded_file($fileTmpName,  $fileDestination);
+				$event->setImageData(base64_encode(file_get_contents($imageLink['tmp_name'])));
+            } else {
+                $error = "Your file is too big!";
+                include('../errors/error.php');
+            }
+        } else {
+            $error = "There was an error uploading your file!";
+            include('../errors/error.php');
+        }
+    } else {
+        $error = "You cannot Upload files of this type!";
+        include('../errors/error.php');
+    }
         events_db::createEvent($event);
        header("Location: /DNDCommityPHP/Events/index.php");
     }

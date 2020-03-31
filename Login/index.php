@@ -29,10 +29,10 @@ switch ($action) {
 		$admin = AdminRepoidtory::VerifyUser($username, $password);
 		if (isset($admin)) {
 			$_SESSION['is_valid_admin'] = true;
-			echo "<h1>loggin in</h1>" . $admin->getUsername();
-			//include('../Admin/adminMenu.php');
+//			echo "<h1>loggin in</h1>" . $admin->getUsername();
+			include('../Admin/adminMenu.php');
 		} else {
-			$login_message = "#" . $user_name . $password . 'You must login to view this page.';
+			$login_message = "#" . $user_name  . 'You must login to view this page.';
 			include('../Login/mangment-login.php');
 		}
 //		if (isset(is_valid_admin_login($user_name, $password))) {
@@ -54,7 +54,6 @@ switch ($action) {
 		include('../Admin/addAdmin.php');
 		break;
 	case 'add_admin':
-		print(11);
 		$user_name = filter_input(INPUT_POST, 'user_name');
 		$password = filter_input(INPUT_POST, 'password');
 		$firstname = filter_input(INPUT_POST, 'firstname');

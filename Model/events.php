@@ -13,7 +13,7 @@
  */
 class events {
 
-    private $eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink;
+    private $eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink,$imageData;
 
     public function events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink) {
         $this->eventID = $eventID;
@@ -26,8 +26,15 @@ class events {
         $this->imageLink=$imageLink;
         
     }
+	public function getImageData() {
+		return $this->imageData;
+	}
 
-    function geteventID() {
+	public function setImageData($imageData) {
+		$this->imageData = $imageData;
+	}
+
+	    function geteventID() {
         return $this->eventID;
     }
 

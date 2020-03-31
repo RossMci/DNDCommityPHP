@@ -31,11 +31,11 @@
                     <div id="mySidenav" class="sidenav">
                          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                              <a href="../member/member-account-detials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
-                            <a href="../Campaigns/campaigns.php">Campaigns</a>
-                            <a href="../member/joined-campaigns.php"> Joined Campaigns</a>
+<!--                            <a href="../Campaigns/campaigns.php">Campaigns</a>
+                            <a href="../member/joined-campaigns.php"> Joined Campaigns</a>-->
                             <a href="../Events/events.php"> Club Events</a>
-                            <a href="../Host/Add-campaigns.php">Add campaign </a>
-                            <a href="../Host/host-current-campaigns.php">current-campaign</a>
+<!--                            <a href="../Host/Add-campaigns.php">Add campaign </a>
+                            <a href="../Host/host-current-campaigns.php">current-campaign</a>-->
                     </div>
                 </div>
                 <div id="menu-contents">

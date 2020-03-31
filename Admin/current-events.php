@@ -90,6 +90,7 @@ require_once('../util/valid_admin.php');
                                     <td><?php echo $event->getTime(); ?></td>
                                     <td><?php echo $event->getLocation(); ?></td>
                                     <td><?php echo $event->getimageLink(); ?></td>
+									<td><img src="data:image/jpeg;base64,'.base64_encode($event->getimageData() ).'" height="200" width="200" class="img-thumnail" /></td>
 
                                     <td><form action="../Events/index.php" method="post"
                                               id="update_event_form">
