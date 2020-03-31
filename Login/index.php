@@ -25,8 +25,8 @@ switch ($action) {
 	case 'login':
 		$user_name = filter_input(INPUT_POST, 'user_name');
 		$password = filter_input(INPUT_POST, 'password');
-		//$admin = AdminRepoidtory::getAdminById(1);
-		$admin = AdminRepoidtory::VerifyUser($username, $password);
+		$admin = AdminRepoidtory::getAdminById(1);
+		$admin = AdminRepoidtory::VerifyUser($user_name, $password);
 		if (isset($admin)) {
 			$_SESSION['is_valid_admin'] = true;
 //			echo "<h1>loggin in</h1>" . $admin->getUsername();

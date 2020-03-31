@@ -26,26 +26,40 @@ class AdminRepoidtory {
 		$statement = $db->prepare($query);
 		$statement->bindValue(":adminId", $id);
 		$statement->execute();
+		$count = $statement->rowCount();
 		$row = $statement->fetch();
 		$statement->closeCursor();
-		return AdminRepoidtory::Transform($row);
+		if ($count > 0)
+			return AdminRepoidtory::Transform($row);
+		else
+			return null;
 	}
 
-	public static function VerifyUser($username, $password) {
+	public static function VerifyUser($user_name, $password) {
 		$db = Database::getDB();
 		$query = 'SELECT * FROM dndadmin
               WHERE user_name= :user_name
  And password = :password';
 		$statement = $db->prepare($query);
 
-		$statement->bindValue(':user_name', $username);
-		$password = password_hash($password, PASSWORD_DEFAULT);
+		$statement->bindValue(':user_name', $user_name);
+//		$password = password_hash($password, PASSWORD_DEFAULT);
 		$statement->bindValue(':password', $password);
 		$statement->execute();
+		$count = $statement->rowCount();
+		echo "<h1>" . $count . "</h1>";
+	   echo "<h1>" . $query . "</h1>";
+		echo "<h1>" . $password . "</h1>";
+		echo "<h1>" . $user_name . "</h1>";
 		$row = $statement->fetch();
 		$statement->closeCursor();
-		
-		return AdminRepoidtory::Transform($row);
+
+
+
+		if ($count > 0)
+			return AdminRepoidtory::Transform($row);
+		else
+			return null;
 	}
 
 }
