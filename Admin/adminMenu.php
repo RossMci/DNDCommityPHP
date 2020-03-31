@@ -32,7 +32,7 @@ require_once('../util/valid_admin.php');
                                 <a href="managentdetials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
                                 <a href="campaign-admin.php">campaign details</a>
                                 <a href="../Campaigns/campaigns.php"> campaigns</a>
-                                <a href="current-events.php">current events</a>
+                                <a href="index.php?action=viewEvents">current events</a>
                                 <a href="../Events/addEvent.php">Add event</a>
                                 <a href="../Events/events.php">Events</a>
                             </div>

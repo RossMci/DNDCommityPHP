@@ -1,5 +1,5 @@
 <?php
-require_once('../util/valid_admin.php');
+//require_once('../util/valid_admin.php');
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -80,39 +80,45 @@ require_once('../util/valid_admin.php');
                                 <th>Update Event</th>
                                 <th>Delete Event</th>
                             </tr>
-<?php foreach ($events as $event) : ?>
-                                <tr>
-                                    <td><?php echo $event->geteventID(); ?></td>
-                                    <td><?php echo $event->getTitle(); ?></td>
-                                    <td><?php echo $event->getDescription(); ?></td>
-                                    <td><?php echo $event->getVenue(); ?></td>
-                                    <td><?php echo $event->getDate(); ?></td>
-                                    <td><?php echo $event->getTime(); ?></td>
-                                    <td><?php echo $event->getLocation(); ?></td>
-                                    <td><?php echo $event->getimageLink(); ?></td>
-									<td><img src="data:image/jpeg;base64,'.base64_encode($event->getimageData() ).'" height="200" width="200" class="img-thumnail" /></td>
+							<?php foreach ($events as $event) : ?>
+								<tr>
+									<td><?php echo $event->geteventID(); ?></td>
+									<td><?php echo $event->getTitle(); ?></td>
+									<td><?php echo $event->getDescription(); ?></td>
+									<td><?php echo $event->getVenue(); ?></td>
+									<td><?php echo $event->getDate(); ?></td>
+									<td><?php echo $event->getTime(); ?></td>
+									<td><?php echo $event->getLocation(); ?></td>
+									<td><?php echo $event->getimageLink(); ?></td>
+									<td>
+										<?php
+										if ($event->getImageData()!=null) {
+											?>
+											<img src="data:image/jpeg;base64,<?php echo($event->getImageData()) ?>" height="200" width="200" class="img-thumnail" />
+										<?php } ?>
+									</td>
 
-                                    <td><form action="../Events/index.php" method="post"
-                                              id="update_event_form">
-                                            <input type="hidden" name="action"
-                                                   value="add_edit_event_form">
-                                            <input type="hidden" name="event_id"
-                                                   value="<?php echo $event->geteventID(); ?>">
+									<td><form action="../Events/index.php" method="post"
+											  id="update_event_form">
+											<input type="hidden" name="action"
+												   value="add_edit_event_form">
+											<input type="hidden" name="event_id"
+												   value="<?php echo $event->geteventID(); ?>">
 
-                                            <input type="submit" value="Update">
-                                        </form></td>
-                                    <td><form action="." method="post"
-                                              id="delete_event_form">
-                                            <input type="hidden" name="action"
-                                                   value="deleteEvent">
-                                            <input type="hidden" name="event_id"
-                                                   value="<?php echo $event->geteventID(); ?>">
+											<input type="submit" value="Update">
+										</form></td>
+									<td><form action="." method="post"
+											  id="delete_event_form">
+											<input type="hidden" name="action"
+												   value="deleteEvent">
+											<input type="hidden" name="event_id"
+												   value="<?php echo $event->geteventID(); ?>">
 
-                                            <input type="submit" value="Delete">
-                                        </form></td>
+											<input type="submit" value="Delete">
+										</form></td>
 
-                                </tr>
-<?php endforeach; ?>
+								</tr>
+							<?php endforeach; ?>
                         </table>
 
                         <button onclick="window.location.href = '../Events/index.php';" type="button"><span> Add a Event</span></button>

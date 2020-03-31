@@ -11,7 +11,7 @@ class events_db {
 
 		$events = array();
 		foreach ($statement as $row) {
-			$events[] = Transform($row);
+			$events[] =events_db::Transform($row);
 		}
 		return $events;
 	}
@@ -31,7 +31,7 @@ class events_db {
 		$statement->execute();
 		$row = $statement->fetch();
 		$statement->closeCursor();
-		return Transform($row);
+		return events_db::Transform($row);
 	}
 
 	public static function createEvent($event) {
