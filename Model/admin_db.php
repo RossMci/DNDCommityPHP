@@ -44,13 +44,16 @@ class AdminRepoidtory {
 
 		$statement->bindValue(':user_name', $user_name);
 //		$password = password_hash($password, PASSWORD_DEFAULT);
-		$statement->bindValue(':password', $password);
+			 $hash = hash('ripemd160', $password);
+//			 $hash=$password;
+			 e29dedf68260584aaddfb1a4faaaa10f46225fe6
+		echo '<h1>'.$password.'</h1>';
+			echo '<h1>'.$hash.'</h1>';
+			echo '<h1>'.$query.'</h1>';
+				echo '<h1>'.$user_name.'</h1>';
+		$statement->bindValue(':password', $hash);
 		$statement->execute();
 		$count = $statement->rowCount();
-		echo "<h1>" . $count . "</h1>";
-	   echo "<h1>" . $query . "</h1>";
-		echo "<h1>" . $password . "</h1>";
-		echo "<h1>" . $user_name . "</h1>";
 		$row = $statement->fetch();
 		$statement->closeCursor();
 
@@ -66,7 +69,10 @@ class AdminRepoidtory {
 
 function add_admin($user_name, $password, $firstname, $lastname) {
 	global $db;
-	$hash = password_hash($password, PASSWORD_DEFAULT);
+//	$hash = password_hash($password, PASSWORD_DEFAULT);
+	
+	 $hash = hash('ripemd160', $password);
+		echo '<h1>'.$hash.'</h1>';
 	$query = 'INSERT INTO dndadmin (user_name, password,firstName, lastName)
               VALUES (:user_name, :password,:firstName, :lastName)';
 	$statement = $db->prepare($query);
