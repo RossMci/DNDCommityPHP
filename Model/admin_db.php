@@ -1,25 +1,30 @@
 <?php
 
-class AdminRepoidtory {
+class AdminRepoidtory
+{
 
-	public static function getEvents() {
+	public static function getEvents()
+	{
 		$db = Database::getDB();
 		$query = 'SELECT * FROM dndadmin';
 		$statement = $db->prepare($query);
 		$statement->execute();
 
 		$adminList = array();
-		foreach ($statement as $row) {
+		foreach ($statement as $row)
+		{
 			$adminList[] = AdminRepoidtory::Transform($row);
 		}
 		return $adminList;
 	}
 
-	protected static function Transform($row): admin {
+	protected static function Transform($row): admin
+	{
 		return new admin($row['firstName'], $row['AdminID'], $row['lastName'], $row['password'], $row['user_name']);
 	}
 
-	public static function getAdminById($id) {
+	public static function getAdminById($id): ?admin
+	{
 		$db = Database::getDB();
 		$query = 'SELECT * FROM dndadmin
                   WHERE adminId = :adminId';
@@ -29,14 +34,18 @@ class AdminRepoidtory {
 		$count = $statement->rowCount();
 		$row = $statement->fetch();
 		$statement->closeCursor();
-		if ($count > 0) {
+		if ($count > 0)
+		{
 			return AdminRepoidtory::Transform($row);
-		} else {
+		}
+		else
+		{
 			return null;
 		}
 	}
 
-	public static function VerifyUser($user_name, $password) {
+	public static function VerifyUser($user_name, $password): ?admin
+	{
 		$db = Database::getDB();
 		$query = 'SELECT * FROM dndadmin
               WHERE user_name= :user_name
@@ -55,14 +64,18 @@ class AdminRepoidtory {
 
 
 
-		if ($count > 0) {
+		if ($count > 0)
+		{
 			return AdminRepoidtory::Transform($row);
-		} else {
+		}
+		else
+		{
 			return null;
 		}
 	}
 
-	public static function InsertAdmin($user_name, $password, $firstname, $lastname) {
+	public static function InsertAdmin($user_name, $password, $firstname, $lastname)
+	{
 		$db = Database::getDB();
 //	$hash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -81,7 +94,8 @@ class AdminRepoidtory {
 
 }
 
-function add_admin($user_name, $password, $firstname, $lastname) {
+function add_admin($user_name, $password, $firstname, $lastname)
+{
 	global $db;
 //	$hash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -98,7 +112,8 @@ function add_admin($user_name, $password, $firstname, $lastname) {
 	$statement->closeCursor();
 }
 
-function is_valid_admin_login($user_name, $password) {
+function is_valid_admin_login($user_name, $password)
+{
 	global $db;
 	$query = 'SELECT Adminid FROM dndadmin
               WHERE user_name= :user_name

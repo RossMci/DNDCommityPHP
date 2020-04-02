@@ -1,6 +1,7 @@
 
 <?php 
 //require_once('../util/valid_admin.php');
+AdminSessionManagement::LogoutCurrentAdmin();
 ?>
 <!DOCTYPE HTML>
 <html lang=en>

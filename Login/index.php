@@ -30,6 +30,7 @@ switch ($action) {
 		$admin = AdminRepoidtory::VerifyUser($user_name, $password);
 		if (isset($admin)) {
 			$_SESSION['is_valid_admin'] = true;
+			$_SERVER["Admin"] = $admin;
 //			echo "<h1>loggin in</h1>" . $admin->getUsername();
 			include('../Admin/adminMenu.php');
 		} else {

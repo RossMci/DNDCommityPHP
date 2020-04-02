@@ -1,6 +1,8 @@
 <?php
 //require_once('../util/valid_admin.php');  // require a secure connection
 //       require_once('../util/valid_admin.php');
+
+AdminSessionManagement::LogoutCurrentAdmin();
 ?>
 <!DOCTYPE html>
 <html>

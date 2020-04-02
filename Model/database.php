@@ -14,7 +14,7 @@
 class database {
       private static $dsn = 'mysql:host=localhost;dbname=dndcusers';
     private static $username = 'root';
-    private static $password = '';
+    private static $password = 'letmein';
     private static $db;
 
     private function __construct() {}
@@ -38,13 +38,13 @@ class database {
 <?php
 $dsn = 'mysql:host=localhost;dbname=dndcusers';
 $username = 'root';
-$password = '';
+$password = 'letmein';
  $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 try {
     $db = new PDO($dsn, $username, $password, $options);
 } catch (PDOException $e) {
     $error = $e->getMessage();
-    include('view/error.php');
+    include('../errors/error.php');
     exit();
 }
 ?>
