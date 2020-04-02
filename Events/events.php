@@ -1,9 +1,4 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 ?>
 
 <!DOCTYPE HTML>
@@ -28,12 +23,14 @@
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <a href="../member/member-account-detials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
-                        <a href="../Character/characterSheetCreation.php">Character sheets</a>
-<!--                        <a href="../Campaigns/campaigns.php">Campaigns</a>
-                        <a href="../member/joined-campaigns.php"> Joined Campaigns</a>-->
-                        <a href="events.php"> Club Events</a>
-<!--                        <a href="../Host/Add-campaigns.php">Add campaign </a>
-                        <a href="../Host/host-current-campaigns.php">current-campaign</a>-->
+						<a href="../Login/mangment-login.php">Admin</a>
+                            <a href="member/index.php">Sign up</a>
+                            <a href="../Login/Login.php">Login</a>
+						<!--                        <a href="../Campaigns/campaigns.php">Campaigns</a>
+												<a href="../member/joined-campaigns.php"> Joined Campaigns</a>-->
+                        <a href="../Events/index.php?action=DisplayEvent"> Club Events</a>
+						<!--                        <a href="../Host/Add-campaigns.php">Add campaign </a>
+												<a href="../Host/host-current-campaigns.php">current-campaign</a>-->
                     </div>
                 </div>
                 <div id="menu-contents">
@@ -67,105 +64,49 @@
                     <h1>Club events </h1>
                     <hr>
                     <div class="row">
-                        <div class="column6">
-                            <section>
-                                <img src="../images/Tomb%20of%20Annihilation.jpg" alt="">
-                                <h3>Title:</h3>
-                                <p> text about the event</p>
-                                <h3>Description:</h3>
-                                <p> text about the event</p>
-                                <h3>Venue:</h3>
-                                <p> text about the event</p>
-                                <h3>Date:</h3>
-                                <p> text about the event</p>
-                                <h3>Time:</h3>
-                                <p> text about the event</p>
-                            </section>
-                        </div>
-                        <div class="column6">
-                            <section>
-                                <img src="../images/CurseofStrahd.jpg" alt="">
-                                <h3>Title:</h3>
-                                <p> text about the event</p>
-                                <h3>Description:</h3>
-                                <p> text about the event</p>
-                                <h3>Venue:</h3>
-                                <p> text about the event</p>
-                                <h3>Date:</h3>
-                                <p> text about the event</p>
-                                <h3>Time:</h3>
-                                <p> text about the event</p>
-                            </section>
-                        </div>
-                        <div class="column6">
-                            <section>
-                                <img src="../images/PrincesoftheApoc.jpg" alt="">
-                                <h3>Title:</h3>
-                                <p> text about the event</p>
-                                <h3>Description:</h3>
-                                <p> text about the event</p>
-                                <h3>Venue:</h3>
-                                <p> text about the event</p>
-                                <h3>Date:</h3>
-                                <p> text about the event</p>
-                                <h3>Time:</h3>
-                                <p> text about the event</p>
-                            </section>
-                        </div>
-                        <div class="column6">
-                            <section>
-                                <img src="../images/outOftheAbyss.jpg" alt="">
-                                <h3>Title:</h3>
-                                <p> text about the event</p>
-                                <h3>Description:</h3>
-                                <p> text about the event</p>
-                                <h3>Venue:</h3>
-                                <p> text about the event</p>
-                                <h3>Date:</h3>
-                                <p> text about the event</p>
-                                <h3>Time:</h3>
-                                <p> text about the event</p>
-                            </section>
-                        </div>
-                        <div class="column6">
-                            <section>
-                                <img src="../images/Hoardofthedragonqueen.jpg" alt="">
-                                <h3>Title:</h3>
-                                <p> text about the event</p>
-                                <h3>Description:</h3>
-                                <p> text about the event</p>
-                                <h3>Venue:</h3>
-                                <p> text about the event</p>
-                                <h3>Date:</h3>
-                                <p> text about the event</p>
-                                <h3>Time:</h3>
-                                <p> text about the event</p>
-                            </section>
-                        </div>
-                        <div class="column6">
-                            <section>
-                                <img src="../images/TheRiseofTiamat.jpg" alt="">
-                                <h3>Title:</h3>
-                                <p> text about the event</p>
-                                <h3>Description:</h3>
-                                <p> text about the event</p>
-                                <h3>Venue:</h3>
-                                <p> text about the event</p>
-                                <h3>Date:</h3>
-                                <p> text about the event</p>
-                                <h3>Time:</h3>
-                                <p> text about the event</p>
-                            </section>
-                        </div>
-                    </div>
-                </div>
+						<?php foreach ($events as $event) : ?>
+							<div class="column6">
+								<section>
+									<?php
+									if ($event->getImageData() != null)
+									{
+										?>
+										<img src="data:image/jpeg;base64,<?php echo($event->getImageData()) ?>" height="200" width="200" class="img-thumnail" />
+									<?php } ?>
+									<h3>Title:</h3>
+									<p> <?php echo $event->getTitle(); ?></p>
+									<h3>Description:</h3>
+									<p><?php echo $event->getDescription(); ?> </p>
+									<h3>Venue:</h3>
+									<p> <?php echo $event->getVenue(); ?></p>
+									<h3>Date:</h3>
+									<p> <?php echo $event->getDate(); ?></p>
+									<h3>Time:</h3>
+									<p> <?php echo $event->getTime(); ?></p>
+									<h3>Location:</h3>
+									<p> <?php echo $event->getLocation(); ?></p>
+									<button onclick="sweet()">Reserve</button>
+								</section>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
             </div>
 
 
             <footer class="footer">
-                
+
             </footer>
         </div>
 
         <script src="../js/dnd.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+		<script type="text/javascript">
+									function sweet() {
+										swal.fire("Resevation Complete!", "give your email too the register desk too reduce registeration time!\nOnly works if your logged in as member", "success");
+									}
+									
+		</script>
     </body></html>	

@@ -19,7 +19,7 @@ class AdminRepoidtory {
 		return new admin($row['firstName'], $row['AdminID'], $row['lastName'], $row['password'], $row['user_name']);
 	}
 
-	public static function getAdminById($id): admin {
+	public static function getAdminById($id) {
 		$db = Database::getDB();
 		$query = 'SELECT * FROM dndadmin
                   WHERE adminId = :adminId';
@@ -29,10 +29,11 @@ class AdminRepoidtory {
 		$count = $statement->rowCount();
 		$row = $statement->fetch();
 		$statement->closeCursor();
-		if ($count > 0)
+		if ($count > 0) {
 			return AdminRepoidtory::Transform($row);
-		else
+		} else {
 			return null;
+		}
 	}
 
 	public static function VerifyUser($user_name, $password) {
@@ -44,13 +45,8 @@ class AdminRepoidtory {
 
 		$statement->bindValue(':user_name', $user_name);
 //		$password = password_hash($password, PASSWORD_DEFAULT);
-			 $hash = hash('ripemd160', $password);
+		$hash = hash('ripemd160', $password);
 //			 $hash=$password;
-			 e29dedf68260584aaddfb1a4faaaa10f46225fe6
-		echo '<h1>'.$password.'</h1>';
-			echo '<h1>'.$hash.'</h1>';
-			echo '<h1>'.$query.'</h1>';
-				echo '<h1>'.$user_name.'</h1>';
 		$statement->bindValue(':password', $hash);
 		$statement->execute();
 		$count = $statement->rowCount();
@@ -59,10 +55,28 @@ class AdminRepoidtory {
 
 
 
-		if ($count > 0)
+		if ($count > 0) {
 			return AdminRepoidtory::Transform($row);
-		else
+		} else {
 			return null;
+		}
+	}
+
+	public static function InsertAdmin($user_name, $password, $firstname, $lastname) {
+		$db = Database::getDB();
+//	$hash = password_hash($password, PASSWORD_DEFAULT);
+
+		$hash = hash('ripemd160', $password);
+		echo '<h1>' . $hash . '</h1>';
+		$query = 'INSERT INTO dndadmin (user_name, password,firstName, lastName)
+              VALUES (:user_name, :password,:firstName, :lastName)';
+		$statement = $db->prepare($query);
+		$statement->bindValue(':user_name', $user_name);
+		$statement->bindValue(':password', $hash);
+		$statement->bindValue(':firstName', $firstname);
+		$statement->bindValue(':lastName', $lastname);
+		$statement->execute();
+		$statement->closeCursor();
 	}
 
 }
@@ -70,9 +84,9 @@ class AdminRepoidtory {
 function add_admin($user_name, $password, $firstname, $lastname) {
 	global $db;
 //	$hash = password_hash($password, PASSWORD_DEFAULT);
-	
-	 $hash = hash('ripemd160', $password);
-		echo '<h1>'.$hash.'</h1>';
+
+	$hash = hash('ripemd160', $password);
+	echo '<h1>' . $hash . '</h1>';
 	$query = 'INSERT INTO dndadmin (user_name, password,firstName, lastName)
               VALUES (:user_name, :password,:firstName, :lastName)';
 	$statement = $db->prepare($query);
@@ -92,7 +106,7 @@ function is_valid_admin_login($user_name, $password) {
 
 	$statement = $db->prepare($query);
 	$statement->bindValue(':user_name', $user_name);
-	//$password = password_hash($password, PASSWORD_DEFAULT);
+//$password = password_hash($password, PASSWORD_DEFAULT);
 	$statement->bindValue(':password', $password);
 
 	$statement->execute();

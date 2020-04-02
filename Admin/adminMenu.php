@@ -1,5 +1,5 @@
 <?php
-require_once('../util/valid_admin.php');
+//require_once('../util/valid_admin.php');
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,10 +30,10 @@ require_once('../util/valid_admin.php');
                             <div id="mySidenav" class="sidenav">
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                 <a href="managentdetials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
-                                <a href="campaign-admin.php">campaign details</a>
-                                <a href="../Campaigns/campaigns.php"> campaigns</a>
+<!--                                <a href="campaign-admin.php">campaign details</a>-->
+<!--                                <a href="../Campaigns/campaigns.php"> campaigns</a>-->
                                 <a href="index.php?action=viewEvents">current events</a>
-                                <a href="../Events/addEvent.php">Add event</a>
+                                <a href="../Events/index.php?action=">Add event</a>
                                 <a href="../Events/events.php">Events</a>
                             </div>
                         </div>
@@ -56,7 +56,7 @@ require_once('../util/valid_admin.php');
 
                             <div id="register-login">
                                 <a href="createMember.html" id="Register1">Sign up</a>
-                                <a href="Login.html" id="Register2">Login</a>
+                                <a href="../Login/index.php?action=logout" id="Register2">Login out </a>
                             </div>
                         </div>
                     </div>
@@ -64,13 +64,16 @@ require_once('../util/valid_admin.php');
 
                 </header>
 
-				<a href="current-events.php">current events</a>
+				<a href="index.php?action=viewEvents">current events</a>
 				<br>
 				<a href="../Events/index.php">Add event</a>
 				<br>
-				<a href="../Admin/managentdetials.php">member List<a/>
-					<br>
-					<a href="../Login/index.php?action=admin_registration">Add Admin<a/>
+				<a href="/Admin/managentdetials.php">member List</a>
+				<br>
+				<a href="../Login/index.php?action=admin_registration">Add Admin</a>
+				<br>
+				<a href="../Events/eventDetails.php">current events</a>
+				<br>
 
 			</div>
             <footer class="footer">

@@ -1,8 +1,11 @@
 <?php
-if (isset($event_id)) {
+if (isset($event_id))
+{
 	$heading_text = 'Edit Event';
-	$image_Link = ' Upload a different image';
-} else {
+	$image_Link = ' Upload a different image or same image';
+}
+else
+{
 	$heading_text = 'Add Event';
 	$image_Link = 'Upload an image';
 }
@@ -75,13 +78,13 @@ if (isset($event_id)) {
                             <div class="row8">
                                 <div class="col-25">
                                     <label><?php echo $image_Link; ?></label>
-                                </div>   
-                                <div id="imageupload upload-form" class="col-75">
+                                </div> 
 
-                                    <input type="file" name="imageLink">
-                                    <p><?php echo $event['imageLink']; ?></p>
-
+								<div id="imageupload upload-form" class="col-75">
+									<input type="file" name="imageLink">
                                 </div>
+
+
                             </div>
                             <div class="row8">
                                 <div class="col-25">

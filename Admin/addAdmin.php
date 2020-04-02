@@ -1,12 +1,12 @@
 <?php
-//    require_once('util/secure_conn.php');  // require a secure connection
+//require_once('../util/valid_admin.php');  // require a secure connection
 //       require_once('../util/valid_admin.php');
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>DNDcommunity</title>
-<!--        <link rel="stylesheet" type="text/css" href="main.css"/>-->
+        <link rel="stylesheet" type="text/css" href="main.css"/>
     </head>
     <body>
         <header>

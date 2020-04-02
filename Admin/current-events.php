@@ -77,6 +77,7 @@
                                 <th> Time</th>
                                 <th>Location</th>
                                 <th>image</th>
+								<th>displayed image</th>
                                 <th>Update Event</th>
                                 <th>Delete Event</th>
                             </tr>

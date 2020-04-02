@@ -42,8 +42,8 @@ class events_db {
 		$Date = $event->getDate();
 		$Time = $event->getTime();
 		$Location = $event->getLocation();
-		//$imageLink = $event->getimageLink();
-		//$imageData = $event->getimageData();
+		$imageLink = $event->getimageLink();
+		$imageData = $event->getimageData();
 		$query = 'INSERT INTO event 
                  (Title, Description, Venue, Date, Time, Location, imageLink,imageData)
                  VALUES
@@ -88,7 +88,7 @@ class events_db {
 		return $row;
 	}
 
-	public static function update_event($event_id, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink) {
+	public static function update_event($event) {
 		$db = Database::getDB();
 		$query = 'UPDATE event
               SET Date = :Date,
@@ -108,7 +108,7 @@ class events_db {
 			$statement->bindValue(':Date', $Date);
 			$statement->bindValue(':Time', $Time);
 			$statement->bindValue(':imageLink', $imageLink);
-			$statement->bindValue(':event_id', $event_id);
+			$statement->bindValue(':event_id', $eventID);
 			$row_count = $statement->execute();
 
 			$statement->closeCursor();

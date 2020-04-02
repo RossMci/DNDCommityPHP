@@ -1,6 +1,6 @@
 
 <?php 
-require_once('../util/valid_admin.php');
+//require_once('../util/valid_admin.php');
 ?>
 <!DOCTYPE HTML>
 <html lang=en>
@@ -41,7 +41,7 @@ require_once('../util/valid_admin.php');
 
                             <div id="logo">
                                 <a href="../index.php">
-                                    <img src="../images/dndlogo3.png" alt="dndlogo">
+<!--                                    <img src="../images/dndlogo3.png" alt="dndlogo">-->
                                 </a>
                                 <h3>COMMUNITY </h3>
                             </div>

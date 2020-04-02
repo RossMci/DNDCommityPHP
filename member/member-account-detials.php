@@ -29,9 +29,10 @@
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                                 <a href="member-account-detials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
                                 <a href="../Character/characterSheetCreation.php">Character sheets</a>
-<!--                                <a href="../Campaigns/campaigns.php">Campaigns</a>
-                                <a href="joined-campaigns.php"> Joined Campaigns</a>-->
-                                <a href="../Events/events.php"> Club Events</a>
+						<!--                        <a href="../Campaigns/campaigns.php">Campaigns</a>
+												<a href="../member/joined-campaigns.php"> Joined Campaigns</a>-->
+<!--                            <a href="../Events/index.php?action=DisplayEvent"> Club Events</a>-->
+                  
 <!--                                <a href="../Host/Add-campaigns.php">Add campaign </a>
                                 <a href="../Host/host-current-campaigns.php">current-campaign</a>-->
 
