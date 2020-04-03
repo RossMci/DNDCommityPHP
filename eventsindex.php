@@ -1,6 +1,7 @@
 
 <?php
 
+require_once ('phpsrc/WebsitePages.php');
 require('Model/database.php');
 require('Model/events.php');
 require('Model/events_db.php');
@@ -25,7 +26,7 @@ if ($action == 'add_edit_event_form')
 	}
 	$event = events_db::getEvent($event_id);
 
-	include('addEvent.php');
+	include(WebsitePages::addEvent);
 }
 else if ($action == 'update_event')
 {
@@ -110,4 +111,4 @@ else if ($action == 'createEvent')
 		header("Location: eventsindex.php");
 	}
 }
-?>
+
