@@ -19,8 +19,8 @@ class WebsitePages
 	public const eventIndex = "../Events/index.php";
 	public const images="images/";
 	public const homeIndex="index.php";
-	public const memberIndex="index.php";
-	public const memberAccount="index.php?memberaccount";
+	public const memberIndex="memberindex.php";
+	public const memberAccount="memberindex.php?action=memberaccount";
 	public const memberSignUp="createMember.php";
 	public const dndStyle="dndstyle.css";
 	public const javaScript="js/dnd.js";

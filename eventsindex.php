@@ -1,9 +1,9 @@
 
 <?php
 
-require('../Model/database.php');
-require('../Model/events.php');
-require('../Model/events_db.php');
+require('Model/database.php');
+require('Model/events.php');
+require('Model/events_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL)
@@ -40,7 +40,7 @@ else if ($action == 'update_event')
 	$imageLink = $_FILES["imageLink"]["name"];
 
 	events_db::update_event($event_id, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink);
-	header("Location: ../Admin/index.php?action=viewEvents");
+	header("Location: adminindex.php?action=viewEvents");
 }
 elseif ($action == 'DisplayEvent')
 {
@@ -71,7 +71,7 @@ else if ($action == 'createEvent')
 	if ($Title == NULL || $Description == NULL || $Venue == NULL || $Date == NULL || $Time == NULL || $Location == NULL || $imageLink == NULL)
 	{
 		$error = "Invalid user data. Check all fields and try again.";
-		include('../errors/error.php');
+		include('errors/error.php');
 	}
 	else
 	{
@@ -85,29 +85,29 @@ else if ($action == 'createEvent')
 				if ($fileSize < 1000000)
 				{
 					$fileNameNew = uniqid('', true) . "." . $fileActualExt;
-					$fileDestination = '../images/' . $fileNameNew;
+					$fileDestination = 'images/' . $fileNameNew;
 //                move_uploaded_file($fileTmpName,  $fileDestination);
 					$event->setImageData(base64_encode(file_get_contents($imageLink['tmp_name'])));
 				}
 				else
 				{
 					$error = "Your file is too big!";
-					include('../errors/error.php');
+					include('errors/error.php');
 				}
 			}
 			else
 			{
 				$error = "There was an error uploading your file!";
-				include('../errors/error.php');
+				include('errors/error.php');
 			}
 		}
 		else
 		{
 			$error = "You cannot Upload files of this type!";
-			include('../errors/error.php');
+			include('errors/error.php');
 		}
 		events_db::createEvent($event);
-		header("Location: /DNDCommityPHP/Events/index.php");
+		header("Location: eventsindex.php");
 	}
 }
 ?>

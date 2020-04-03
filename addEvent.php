@@ -1,4 +1,6 @@
 <?php
+require_once ('phpsrc/WebsitePages.php');
+
 if (isset($event_id))
 {
 	$heading_text = 'Edit Event';

@@ -1,5 +1,7 @@
 <?php
-require_once ('../Model/AdminSessionManagement.php');
+require_once ('Model/AdminSessionManagement.php');
+require_once ('phpsrc/WebsitePages.php');
+
 AdminSessionManagement::HandleAdminAccess();
 ?>
 <!DOCTYPE HTML>

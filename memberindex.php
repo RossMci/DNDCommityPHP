@@ -1,9 +1,9 @@
 
 <?php
 
-require('../Model/database.php');
-require('../Model/member.php');
-require('../Model/member_db.php');
+require('Model/database.php');
+require('Model/member.php');
+require('Model/memberrepository.php');
 
 
 $action = filter_input(INPUT_POST, 'action');
@@ -31,7 +31,7 @@ else if ($action == 'edit_member')
 	$memberEmail = filter_input(INPUT_POST, 'memberEmail');
 	$memberPassword = filter_input(INPUT_POST, 'memberPassword');
 	$hostAccess = filter_input(INPUT_POST, 'hostAccess');
-	member_db::update_member($member_id, $Fname, $Lname, $userName, $PhoneNumber, $memberEmail, $memberPassword, $hostAccess);
+	memberrepository::update_member($member_id, $Fname, $Lname, $userName, $PhoneNumber, $memberEmail, $memberPassword, $hostAccess);
 }
 else if ($action == 'memberaccount')
 {
@@ -41,7 +41,7 @@ else if ($action == 'memberaccount')
 	{
 		$member_id = filter_input(INPUT_POST, 'member_id');
 	}
-	$member = member_db::getmember($member_id);
+	$member = memberrepository::getmember($member_id);
 
 	include('member-account-detials.php');
 }
@@ -67,7 +67,7 @@ else if ($action == 'create_member')
 	{
 
 		$member = new member($memberID, $Fname, $Lname, $userName, $PhoneNumber, $memberEmail, $memberPassword, $hostAccess);
-		member_db::createmember($member);
+		memberrepository::createmember($member);
 		header("Location: /DNDCommityPHP/member/index.php");
 	}
 }

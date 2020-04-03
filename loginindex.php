@@ -2,10 +2,10 @@
 
 // Start session management and include necessary functions
 session_start();
-require_once('../Model/database.php');
-require_once('../Model/admin_db.php');
-require_once ('../Model/admin.php');
-require_once ('../Model/AdminSessionManagement.php');
+require_once('Model/AdminSessionManagement.php');
+require_once('Model/database.php');
+require_once('Model/admin_db.php');
+require_once('Model/admin.php');
 
 $login_message = "";
 // Get the action to perform
@@ -38,26 +38,26 @@ switch ($action)
 			$_SESSION['is_valid_admin'] = true;
 			$_SESSION["Admin"] = $admin;
 //			echo "<h1>loggin in</h1>" . $admin->getUsername();
-			include('../Admin/adminMenu.php');
+			include('adminMenu.php');
 		}
 		else
 		{
 			$login_message = "#" . $user_name . 'You must login to view this page.';
-			include('../Login/mangment-login.php');
+			include('mangment-login.php');
 		}
 
 		break;
 	case 'viewEvents':
 		echo "<h1>blah</h1>";
 //		include('../Admin/index.php');
-		header('Location: ../Admin/index.php?action=viewEvents');
+		header('Location: adminindex.php?action=viewEvents');
 		break;
 
 	case 'show_admin_menu':
-		include('../Admin/AdminMenu.php');
+		include('AdminMenu.php');
 		break;
 	case 'admin_registration' :
-		include('../Admin/addAdmin.php');
+		include('addAdmin.php');
 		break;
 	case 'add_admin':
 		$user_name = filter_input(INPUT_POST, 'user_name');
@@ -65,12 +65,12 @@ switch ($action)
 		$firstname = filter_input(INPUT_POST, 'firstname');
 		$lastname = filter_input(INPUT_POST, 'lastname');
 		add_admin($user_name, $password, $firstname, $lastname);
-		include('../Admin/adminMenu.php');
+		include('adminMenu.php');
 		break;
 	case 'logout':
 		AdminSessionManagement::LogoutCurrentAdmin();
 		$login_message = 'You have been logged out.';
-		include('../Login/mangment-login.PHP');
+		include('mangment-login.php');
 		break;
 
 	case 'login':
@@ -82,12 +82,12 @@ switch ($action)
 		{
 			AdminSessionManagement::LoginAdmin($admin);
 			$_SESSION['is_valid_admin'] = true;
-			include('../Admin/adminMenu.php');
+			include('adminMenu.php');
 		}
 		else
 		{
 			$login_message = "#" . $user_name . 'You must login to view this page.';
-			include('../Login/mangment-login.php');
+			include('mangment-login.php');
 		}
 
 

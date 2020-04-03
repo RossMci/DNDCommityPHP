@@ -1,10 +1,12 @@
-
+<?php
+require_once ('phpsrc/WebsitePages.php');
+?>
 <!DOCTYPE HTML>
 <html lang= en>
     <head>
         <meta charset="utf-8" >
         <title>MEMBER SIGN UP</title>
-        <link href="../dndstyle.css" rel="stylesheet" type="text/css">
+        <link href="dndstyle.css" rel="stylesheet" type="text/css">
 
     </head>
 

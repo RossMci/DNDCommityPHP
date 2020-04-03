@@ -1,4 +1,6 @@
-<?php ?>
+<?php 
+require_once ('phpsrc/WebsitePages.php');
+?>
 
 <!DOCTYPE HTML>
 <html lang= en> 

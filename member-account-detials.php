@@ -1,4 +1,6 @@
 <?php
+require_once ('Model/MemberSessionManagement.php');
+require_once ('phpsrc/WebsitePages.php');
 MemberSessionManagement::LogoutCurrentMember();
 ?>
 
@@ -7,10 +9,10 @@ MemberSessionManagement::LogoutCurrentMember();
     <head>
         <meta charset="utf-8">
         <title>MEMBER DETAILS</title>
-        <link href="../dndstyle.css" rel="stylesheet" type="text/css">
+        <link href="dndstyle.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="../js/dnd.js"></script>
+        <script src="js/dnd.js"></script>
     </head>
 
     <body>
