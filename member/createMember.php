@@ -13,7 +13,7 @@
             <div id="main">
                 <div class="form-postion">
                     <h2 id="signup">MEMBER SIGN UP</h2>
-                    <form class="form" action="index.php" method="post">
+                    <form class="form" action="<?php echo WebsitePages::memberIndex; ?>" method="post">
 
                         <input type="hidden" name="action" value="create_member" />
 
@@ -47,10 +47,10 @@
                         <p><label for="password2"> confirm password:</label></p>
                         <input type="password" id="password2" name="password2" placeholder="Confirm password">
                         <span id="password2_error"></span><br>
-                        
-                         <p><label for="hostaccess2"> host access</label></p>
-                         <input type="checkbox" id="hostaccess2" name="hostAccess">
-            
+
+						<p><label for="hostaccess2"> host access</label></p>
+						<input type="checkbox" id="hostaccess2" name="hostAccess">
+
 
                         <div class="same-line">
                             <div class="button-container">
@@ -58,7 +58,7 @@
                                 <input type="submit" value="Create Member">
                             </div>     
                             <div class="button-container">
-                                <button onclick="window.location.href = '../index.php';" type="button" class="cancelbtn "><span>CANCEL</span></button>
+                                <button onclick="window.location.href = '<?php echo WebsitePages::homeIndex; ?>';" type="button" class="cancelbtn "><span>CANCEL</span></button>
                             </div>
                         </div>
                     </form>

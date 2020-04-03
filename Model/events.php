@@ -11,92 +11,111 @@
  *
  * @author ross1
  */
-class events {
+class events
+{
 
-    private $eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink,$imageData;
+	private $eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink, $imageData;
 
-    public function events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink) {
-        $this->eventID = $eventID;
-        $this->Title = $Title;
-        $this->Description = $Description;
-        $this->Venue = $Venue;
-        $this->Date = $Date;
-        $this->Time = $Time;
-        $this->Location = $Location;
-        $this->imageLink=$imageLink;
-        
-    }
-	public function getImageData() {
+	public function events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink)
+	{
+		$this->eventID = $eventID;
+		$this->Title = $Title;
+		$this->Description = $Description;
+		$this->Venue = $Venue;
+		$this->Date = $Date;
+		$this->Time = $Time;
+		$this->Location = $Location;
+		$this->imageLink = $imageLink;
+	}
+
+	public function getImageData()
+	{
 		return $this->imageData;
 	}
 
-	public function setImageData($imageData) {
+	public function setImageData($imageData)
+	{
 		$this->imageData = $imageData;
 	}
 
-	    function geteventID() {
-        return $this->eventID;
-    }
+	function geteventID()
+	{
+		return $this->eventID;
+	}
 
-    function seteventID($value) {
-        $this->eventID = $value;
-    }
+	function seteventID($value)
+	{
+		$this->eventID = $value;
+	}
 
-    function getTitle() {
-        return $this->Title;
-    }
+	function getTitle()
+	{
+		return $this->Title;
+	}
 
-    function setTitle($value) {
-        $this->Title = $value;
-    }
+	function setTitle($value)
+	{
+		$this->Title = $value;
+	}
 
-    function getDescription() {
-        return $this->Description;
-    }
+	function getDescription()
+	{
+		return $this->Description;
+	}
 
-    function setDescription($value) {
-        $this->Description = $value;
-    }
+	function setDescription($value)
+	{
+		$this->Description = $value;
+	}
 
-    function getVenue() {
-        return $this->Venue;
-    }
+	function getVenue()
+	{
+		return $this->Venue;
+	}
 
-    function setVenue($value) {
-        $this->Venue = $value;
-    }
+	function setVenue($value)
+	{
+		$this->Venue = $value;
+	}
 
-    function getDate() {
-        return $this->Date;
-    }
+	function getDate()
+	{
+		return $this->Date;
+	}
 
-    function setDate($value) {
-        $this->Date = $value;
-    }
+	function setDate($value)
+	{
+		$this->Date = $value;
+	}
 
-    function getTime() {
-        return $this->Time;
-    }
+	function getTime()
+	{
+		return $this->Time;
+	}
 
-    function setTime($value) {
-        $this->Time = $value;
-    }
+	function setTime($value)
+	{
+		$this->Time = $value;
+	}
 
-    function getLocation() {
-        return $this->Location;
-    }
+	function getLocation()
+	{
+		return $this->Location;
+	}
 
-    function setLocation($value) {
-        $this->Location = $value;
-    }
-    
-    
-    function getimageLink() {
-        return $this->imageLink;
-    }
+	function setLocation($value)
+	{
+		$this->Location = $value;
+	}
 
-    function setimageLink($value) {
-        $this->imageLink = $value;
-    }
+	function getimageLink()
+	{
+		return $this->imageLink;
+	}
+
+	function setimageLink($value)
+	{
+		$this->imageLink = $value;
+	}
 
 }

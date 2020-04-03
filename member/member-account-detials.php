@@ -1,9 +1,5 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+MemberSessionManagement::LogoutCurrentMember();
 ?>
 
 <!DOCTYPE HTML>
@@ -27,15 +23,12 @@
                         <div id="menu">
                             <div id="mySidenav" class="sidenav">
                                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                                <a href="member-account-detials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
-                                <a href="../Character/characterSheetCreation.php">Character sheets</a>
-						<!--                        <a href="../Campaigns/campaigns.php">Campaigns</a>
-												<a href="../member/joined-campaigns.php"> Joined Campaigns</a>-->
-<!--                            <a href="../Events/index.php?action=DisplayEvent"> Club Events</a>-->
-                  
-<!--                                <a href="../Host/Add-campaigns.php">Add campaign </a>
-                                <a href="../Host/host-current-campaigns.php">current-campaign</a>-->
-
+							<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                                <a href="<?php echo WebsitePages::memberAccount; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
+								<a href="<?php echo WebsitePages::adminLogin; ?>">Admin</a>
+								<a href="<?php echo WebsitePages::memberSignUp; ?>">Sign up</a>
+								<a href="<?php echo WebsitePages::memberLogin; ?>">Login</a>
+								<a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent"> Club Events</a>
                             </div>  
                         </div>
                         <div id="menu-contents">
@@ -43,8 +36,8 @@
                         </div>
 
                         <div id="logo">
-                            <a href="../index.php">
-                                <img src="../images/dndlogo3.png" alt="dndlogo">
+							<a href="<?php echo WebsitePages::homeIndex; ?>"> 
+								<img src="<?php echo WebsitePages::images; ?>dndlogo3.png" alt="dndlogo">
                             </a>
                             <h3>COMMUNITY </h3>
                         </div>
@@ -55,15 +48,15 @@
                                 <input type="text" placeholder="Search..">
                             </div>
 
-                            <!--                        <div id="register-login">
-                                                        <a href="createMember.html" id="Register1">Sign up</a>
-                                                        <a href="Login.html" id="Register2">Login</a>
-                                                    </div>-->
+							<div id="register-login">
+                                <a href="<?php echo WebsitePages::memberSignUp; ?>" id="Register1">Sign up</a>
+<!--                                <a href="<?php echo WebsitePages::memberLogin; ?>?action=logout" id="Register2">Login out </a>-->
+                            </div>
                         </div>
                     </div>
                 </header>
                 <div class="account">
-                    <form class="form2" name="email_form" action="index.php" method="post">
+                    <form class="form2" name="email_form" action="<?php echo WebsitePages::memberIndex; ?>" method="post">
                         <h2> account details </h2>
                         <i class="fa fa-user-circle" id="usericon-details"></i>
 
@@ -71,22 +64,22 @@
                             <input type="hidden" name="action" value="update_member" />
                             <input type="hidden" name="member_id" value="<?php echo $member_id; ?>">
 <!--                            <input type="hidden" name="member_id" value="1">-->
-                            <input type="text" id="first_name" name="Fname" value="<?php echo  $member['Fname'];     ?>">
+                            <input type="text" id="first_name" name="Fname" value="<?php echo $member['Fname']; ?>">
                             <span id="first_name_error"></span><br>
-                            <input type="text" id="Last_name" name="Lname" value="<?php echo  $member['Lname'];     ?>">
+                            <input type="text" id="Last_name" name="Lname" value="<?php echo $member['Lname']; ?>">
                             <span id="Last_name_error"></span><br>
-                            <input type="text" id="user_name" name="userName" value="<?php echo  $member['userName'];     ?> ">
+                            <input type="text" id="user_name" name="userName" value="<?php echo $member['userName']; ?> ">
                             <span id="user_name_error"></span><br>
 
-                            <input type="text" id="phone_number" name="PhoneNumber" value="<?php echo  $member['PhoneNumber'];     ?> ">
+                            <input type="text" id="phone_number" name="PhoneNumber" value="<?php echo $member['PhoneNumber']; ?> ">
                             <span id="phone_number_error"></span><br>
-                            <input type="text" id="email1" name="memberEmail" value="<?php echo  $member['memberEmail'];     ?>">
+                            <input type="text" id="email1" name="memberEmail" value="<?php echo $member['memberEmail']; ?>">
                             <span id="email2_error"></span><br>
 
-                            <input type="text" id="password1" name="memberPassword" value="<?php echo  $member['memberPassword'];     ?>">
+                            <input type="text" id="password1" name="memberPassword" value="<?php echo $member['memberPassword']; ?>">
                             <span id="password1_error"></span><br>
                             <div>
-                                <input type="text" class="hostaccess" name="hostAccess"  value="<?php echo  $member['hostAccess'];     ?>">
+                                <input type="text" class="hostaccess" name="hostAccess"  value="<?php echo $member['hostAccess']; ?>">
                                 <label for="hostaccess" class="hostaccess"> Host access</label><br>
                             </div>
                         </div>
@@ -102,7 +95,7 @@
                                     <input type="submit" value="save">
                                 </form>                        </div>
                             <div class="button-container">
-                                <button onclick="window.location.href = 'index.html';" type="button" class="cancelbtn-account "><span>Cancel</span></button>
+                                <button onclick="window.location.href = '<?php echo WebsitePages::memberhome; ?>';" type="button" class="cancelbtn-account "><span>Cancel</span></button>
                             </div>
                         </div>
                     </form>

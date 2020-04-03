@@ -29,8 +29,7 @@ if ($action == 'add_edit_event_form')
 }
 else if ($action == 'update_event')
 {
-
-	$eventID = filter_input(INPUT_POST, 'event_id', FILTER_VALIDATE_INT);
+	$event_id = filter_input(INPUT_POST, 'event_id', FILTER_VALIDATE_INT);
 	$Title = filter_input(INPUT_POST, 'Title');
 	$Description = filter_input(INPUT_POST, 'Description');
 	$Venue = filter_input(INPUT_POST, 'Venue');
@@ -38,47 +37,9 @@ else if ($action == 'update_event')
 	$Time = filter_input(INPUT_POST, 'Time');
 	$Location = filter_input(INPUT_POST, 'Location');
 //    $imageLink = filter_input(INPUT_POST, 'imageLink');
-	$imageLink = $_FILES['imageLink'];
+	$imageLink = $_FILES["imageLink"]["name"];
 
-	$fileName = $_FILES['imageLink']['name'];
-	$fileTmpName = $_FILES['imageLink']['tmp_name'];
-	$fileSize = $_FILES['imageLink']['size'];
-	$fileError = $_FILES['imageLink']['error'];
-	$fileType = $_FILES['imageLink']['type'];
-
-	$fileExt = explode('.', $fileName);
-	$fileActualExt = strtolower(end($fileExt));
-	$event = events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $fileName);
-	$allowed = array('jpg', 'jpeg', 'png');
-	if (in_array($fileActualExt, $allowed))
-	{
-		if ($fileError === 0)
-		{
-			if ($fileSize < 1000000)
-			{
-				$fileNameNew = uniqid('', true) . "." . $fileActualExt;
-				$fileDestination = '../images/' . $fileNameNew;
-//                move_uploaded_file($fileTmpName,  $fileDestination);
-				$event->setImageData(base64_encode(file_get_contents($imageLink['tmp_name'])));
-			}
-			else
-			{
-				$error = "Your file is too big!";
-				include('../errors/error.php');
-			}
-		}
-		else
-		{
-			$error = "There was an error uploading your file!";
-			include('../errors/error.php');
-		}
-	}
-	else
-	{
-		$error = "You cannot Upload files of this type!";
-		include('../errors/error.php');
-	}
-	events_db::update_event($event);
+	events_db::update_event($event_id, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink);
 	header("Location: ../Admin/index.php?action=viewEvents");
 }
 elseif ($action == 'DisplayEvent')

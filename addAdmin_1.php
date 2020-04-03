@@ -1,8 +1,6 @@
 <?php
-//require_once('../util/valid_admin.php');  // require a secure connection
-//       require_once('../util/valid_admin.php');
-
-AdminSessionManagement::LogoutCurrentAdmin();
+require_once ('../Model/AdminSessionManagement.php');
+AdminSessionManagement::HandleAdminAccess();
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,17 +27,17 @@ AdminSessionManagement::LogoutCurrentAdmin();
                 <label>First Name:</label>
                 <input type="test" class="text" name="firstname">
                 <br>
-                 <label>Last Name:</label>
+				<label>Last Name:</label>
                 <input type="test" class="text" name="lastname">
                 <br>
                 <label>&nbsp;</label>
                 <input type="submit" value="Add">
             </form>
 
-            
-            
+
+
             <br><br>
-           
+
         </main>
     </body>
 </html>

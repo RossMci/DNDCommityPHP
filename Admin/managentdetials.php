@@ -1,7 +1,6 @@
-
-<?php 
-//require_once('../util/valid_admin.php');
-AdminSessionManagement::LogoutCurrentAdmin();
+<?php
+require_once ('../Model/AdminSessionManagement.php');
+AdminSessionManagement::HandleAdminAccess();
 ?>
 <!DOCTYPE HTML>
 <html lang=en>
@@ -9,10 +8,10 @@ AdminSessionManagement::LogoutCurrentAdmin();
     <head>
         <meta charset="utf-8">
         <title>management DETAILS</title>
-            <link href="../dndstyle.css" rel="stylesheet" type="text/css">
+		<link href="<?php echo WebsitePages::dndStyle; ?>" rel="stylesheet" type="text/css">  
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="../js/dnd.js"></script>
+        <script src="<?php echo WebsitePages::javaScript; ?>"></script>
         <script src="jquery-ui-1.12.1.custom"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
@@ -28,12 +27,10 @@ AdminSessionManagement::LogoutCurrentAdmin();
                             <div id="menu">
                                 <div id="mySidenav" class="sidenav">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                                    <a href="managentdetials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
-                                    <a href="campaign-admin.php">campaign details</a>
-                                    <a href="../Campaigns/campaigns.php"> campaigns</a>
-                                    <a href="index.php?action=viewEvents">current events</a>
-                                    <a href="../Events/index.php">Add event</a>
-                                    <a href="../Events/events.php">Events</a>
+                                <a href="<?php echo WebsitePages::managentdetialsIndex; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>                   
+                                <a href="<?php echo WebsitePages::adminIndex; ?>?action=viewEvents">current events</a>
+                                <a href="<?php echo WebsitePages::eventIndex; ?>?action=createEvent">Add event</a>
+                                <a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent">Events</a>
                                 </div>
                             </div>
                             <div id="menu-contents">
@@ -41,8 +38,8 @@ AdminSessionManagement::LogoutCurrentAdmin();
                             </div>
 
                             <div id="logo">
-                                <a href="../index.php">
-<!--                                    <img src="../images/dndlogo3.png" alt="dndlogo">-->
+                                <a href="<?php echo WebsitePages::homeIndex; ?>">
+                                <img src="<?php echo WebsitePages::images; ?>dndlogo3.png" alt="dndlogo">
                                 </a>
                                 <h3>COMMUNITY </h3>
                             </div>
@@ -53,16 +50,16 @@ AdminSessionManagement::LogoutCurrentAdmin();
                                     <input type="text" placeholder="Search..">
                                 </div>
 
-                                <!--                        <div id="register-login">
-                                                            <a href="createMember.html" id="Register1">Sign up</a>
-                                                            <a href="../Login/Login.php" id="Register2">Login</a>
-                                                        </div>-->
+                                                        <div id="register-login">
+                                <a href="<?php echo WebsitePages::memberIndex; ?>?action=createMember" id="Register1">Sign up</a>
+                                <a href="<?php echo WebsitePages::loginIndex; ?>?action=logout" id="Register2">Login out </a>
+                            </div>
                             </div>
                         </div>
                     </header>
                     <div id="management">
                         <div id="mangement-account-details">
-                            <form class="form2" name="email_form" action="thanks.html" method="get">
+                            <form class="form2" name="email_form" action="<?php echo WebsitePages::adminIndex; ?>" method="get">
                                 <h2> admin details </h2>
                                 <i class="fa fa-user-circle" id="usericon-details"></i>
 
@@ -109,37 +106,32 @@ AdminSessionManagement::LogoutCurrentAdmin();
                                     <th> delete account</th>
                                 </tr>
 
-<?php foreach ($members as $member) : ?>
-                                    <tr>
-                                        <td><?php echo $member->getmemberID(); ?></td>
-                                        <td><?php echo $member->getFname(); ?></td>
-                                        <td><?php echo $member->getLname(); ?></td>
-                                        <td><?php echo $member->getuserName(); ?></td>
-                                        <td><?php echo $member->getPhoneNumber(); ?></td>
-                                        <td><?php echo $member->getmemberEmail(); ?></td>
-                                        <td><?php echo $member->getmemberPassword(); ?></td>
-                                        <td><?php echo $member->gethostAccess(); ?></td>
-                                        <td> <form><input type="submit" value="view"></form></td>
-                                        <td><form action="." method="post"
-                                                  id="delete_member_form">
-                                                <input type="hidden" name="action"
-                                                       value="delete_member">
-                                                <input type="hidden" name="member_id"
-                                                       value="<?php echo $member->getmemberID(); ?>">
+								<?php foreach ($members as $member) : ?>
+									<tr>
+										<td><?php echo $member->getmemberID(); ?></td>
+										<td><?php echo $member->getFname(); ?></td>
+										<td><?php echo $member->getLname(); ?></td>
+										<td><?php echo $member->getuserName(); ?></td>
+										<td><?php echo $member->getPhoneNumber(); ?></td>
+										<td><?php echo $member->getmemberEmail(); ?></td>
+										<td><?php echo $member->getmemberPassword(); ?></td>
+										<td><?php echo $member->gethostAccess(); ?></td>
+										<td> <form><input type="submit" value="view"></form></td>
+										<td><form action="." method="post"
+												  id="delete_member_form">
+												<input type="hidden" name="action"
+													   value="delete_member">
+												<input type="hidden" name="member_id"
+													   value="<?php echo $member->getmemberID(); ?>">
 
-                                                <input type="submit" value="Delete">
-                                            </form></td>
-                                    </tr>
-<?php endforeach; ?>
+												<input type="submit" value="Delete">
+											</form></td>
+									</tr>
+								<?php endforeach; ?>
                             </table>
                         </div>
 
                     </div>
-
-<!-- <td> <button onclick="window.location.href ='../member/member-account-detials.php';" type="button"><span> view account</span></button></td>
-                            <td> <button onclick="window.location.href ='index.php';" type="button"><span>Delete</span></button></td>-->
-
-
                 </div>
 
                 <footer class="footer">

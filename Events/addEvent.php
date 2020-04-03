@@ -19,10 +19,10 @@ else
     <head>
         <meta charset="utf-8">
         <title>Add event</title>
-        <link href="../dndstyle.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo WebsitePages::dndStyle; ?>" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="../js/dnd.js"></script>
+        <script src="<?php echo WebsitePages::javaScript; ?>"></script>
 
     </head>
 
@@ -34,13 +34,10 @@ else
                 <div id="menu">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="../admin/managentdetials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
-						<!--                        <a href="campaign-admin.php">campaign details</a>
-												<a href="../Campaigns/campaigns.php"> campaigns</a>-->
-                        <a href="../Admin/index.php?action=viewEvents">current events</a>
-                        <a href="../Events/addEvent.php">Add event</a>
-                        <a href="../Events/events.php">Events</a>
+                                <a href="<?php echo WebsitePages::managentdetialsIndex; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
+                                <a href="<?php echo WebsitePages::adminIndex; ?>?action=viewEvents">current events</a>
+                                <a href="<?php echo WebsitePages::eventIndex; ?>?action=createEvent">Add event</a>
+                                <a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent">Events</a>
                     </div>
                 </div>
                 <div id="menu-contents">
@@ -48,8 +45,8 @@ else
                 </div>
 
                 <div id="logo">
-                    <a href="../index.php">
-                        <img src="../images/dndlogo3.png" alt="dndlogo">
+                   <a href="<?php echo WebsitePages::homeIndex; ?>"> 
+                                <img src="<?php echo WebsitePages::images; ?>dndlogo3.png" alt="dndlogo">
                     </a>
                     <h3>COMMUNITY </h3>
                 </div>
@@ -59,6 +56,11 @@ else
                         <i class="fa fa-search" id="search" style="font-size:24px"></i>
                         <input type="text" placeholder="Search..">
                     </div>
+					
+					 <div id="register-login">
+                                <a href="<?php echo WebsitePages::memberIndex; ?>?action=createMember" id="Register1">Sign up</a>
+                                <a href="<?php echo WebsitePages::loginIndex; ?>?action=logout" id="Register2">Login out </a>
+                            </div>
                 </div>
             </div>
         </header>
@@ -67,7 +69,7 @@ else
                 <div id="campaign-detialsPage">
                     <hr>
                     <div class="form-contentcamd">
-                        <form id="event-edit" action="index.php" method="post" enctype="multipart/form-data">
+                        <form id="event-edit" action="<?php echo WebsitePages::eventIndex; ?>" method="post" enctype="multipart/form-data">
 							<?php if (isset($event_id)) : ?>
 								<input type="hidden" name="action" value="update_event" />
 								<input type="hidden" name="event_id" value="<?php echo $event_id; ?>" />
@@ -140,11 +142,11 @@ else
                             </div>
                             <div id="add-event">
                                 <input class="btn2"  type="submit" value="Save">
-                                <button class="btn2" onclick="window.location.href = 'index.html';" type="submit" value="Join">cancel</button>
+                                <button class="btn2" onclick="window.location.href = '<?php echo WebsitePages::homeIndex; ?>';" type="submit" value="Join">cancel</button>
                             </div>
 
                         </form>
-                        <form id="event-edit" action="../Admin/index.php" method="post">
+                        <form id="event-edit" action="<?php echo WebsitePages::adminIndex; ?>" method="post">
                             <input type="hidden" name="action" value="viewEvents" />
                             <button class="btn2" type="submit">View</button>
                         </form>

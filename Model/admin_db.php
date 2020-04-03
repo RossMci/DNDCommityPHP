@@ -18,7 +18,7 @@ class AdminRepoidtory
 		return $adminList;
 	}
 
-	protected static function Transform($row): admin
+	protected static function Transform($row): ?admin
 	{
 		return new admin($row['firstName'], $row['AdminID'], $row['lastName'], $row['password'], $row['user_name']);
 	}
@@ -112,7 +112,7 @@ function add_admin($user_name, $password, $firstname, $lastname)
 	$statement->closeCursor();
 }
 
-function is_valid_admin_login($user_name, $password)
+function _deprecated_is_valid_admin_login($user_name, $password)
 {
 	global $db;
 	$query = 'SELECT Adminid FROM dndadmin

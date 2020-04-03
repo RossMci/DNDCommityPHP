@@ -11,11 +11,13 @@
  *
  * @author ross1
  */
-class admin {
+class admin
+{
 
 	private $id, $firstname, $lastname, $username, $email, $password;
 
-	public function admin($firstname, $id, $lastname, $password, $username) {
+	public function admin($firstname, $id, $lastname, $password, $username)
+	{
 		$this->$id = $id;
 		$this->firstname = $firstname;
 		$this->lastname = $lastname;
@@ -23,51 +25,63 @@ class admin {
 		$this->password = $password;
 	}
 
-	public function getId() {
+	public function getId()
+	{
 		return $this->id;
 	}
 
-	public function getFirstname() {
+	public function getFirstname()
+	{
 		return $this->firstname;
 	}
 
-	public function getLastname() {
+	public function getLastname()
+	{
 		return $this->lastname;
 	}
 
-	public function getUsername() {
+	public function getUsername()
+	{
 		return $this->username;
 	}
 
-	public function getEmail() {
+	public function getEmail()
+	{
 		return $this->email;
 	}
 
-	public function getPassword() {
+	public function getPassword()
+	{
 		return $this->password;
 	}
 
-	public function setId($id) {
+	public function setId($id)
+	{
 		$this->id = $id;
 	}
 
-	public function setFirstname($firstname) {
+	public function setFirstname($firstname)
+	{
 		$this->firstname = $firstname;
 	}
 
-	public function setLastname($lastname) {
+	public function setLastname($lastname)
+	{
 		$this->lastname = $lastname;
 	}
 
-	public function setUsername($username) {
+	public function setUsername($username)
+	{
 		$this->username = $username;
 	}
 
-	public function setEmail($email) {
+	public function setEmail($email)
+	{
 		$this->email = $email;
 	}
 
-	public function setPassword($password) {
+	public function setPassword($password)
+	{
 		$this->password = $password;
 	}
 

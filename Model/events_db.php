@@ -1,8 +1,10 @@
 <?php
 
-class events_db {
+class events_db
+{
 
-	public static function getEvents() {
+	public static function getEvents()
+	{
 		$db = Database::getDB();
 		$query = 'SELECT * FROM event
                   ORDER BY eventID';
@@ -10,19 +12,22 @@ class events_db {
 		$statement->execute();
 
 		$events = array();
-		foreach ($statement as $row) {
-			$events[] =events_db::Transform($row);
+		foreach ($statement as $row)
+		{
+			$events[] = events_db::Transform($row);
 		}
 		return $events;
 	}
 
-	protected static function Transform($row): events {
+	protected static function Transform($row): events
+	{
 		$event = new events($row['eventID'], $row['Title'], $row['Description'], $row['Date'], $row['Venue'], $row['Time'], $row['Location'], $row['imageLink']);
 		$event->setImageData($row['imageData']);
 		return $event;
 	}
 
-	public static function getEventById($event_id) {
+	public static function getEventById($event_id)
+	{
 		$db = Database::getDB();
 		$query = 'SELECT * FROM event
                   WHERE eventID = :event_id';
@@ -34,7 +39,8 @@ class events_db {
 		return events_db::Transform($row);
 	}
 
-	public static function createEvent($event) {
+	public static function createEvent($event)
+	{
 		$db = Database::getDB();
 		$Title = $event->getTitle();
 		$Description = $event->getDescription();
@@ -42,8 +48,6 @@ class events_db {
 		$Date = $event->getDate();
 		$Time = $event->getTime();
 		$Location = $event->getLocation();
-		$imageLink = $event->getimageLink();
-		$imageData = $event->getimageData();
 		$query = 'INSERT INTO event 
                  (Title, Description, Venue, Date, Time, Location, imageLink,imageData)
                  VALUES
@@ -65,7 +69,8 @@ class events_db {
 		$statement->closeCursor();
 	}
 
-	public static function DeleteEvent($event_id) {
+	public static function DeleteEvent($event_id)
+	{
 		$db = Database::getDB();
 		$query = 'DELETE FROM event
                   WHERE eventID = :event_id';
@@ -75,7 +80,8 @@ class events_db {
 		$statement->closeCursor();
 	}
 
-	public static function getEvent($event_id) {
+	public static function getEvent($event_id)
+	{
 		$db = Database::getDB();
 		$query = 'SELECT * FROM event
                   WHERE eventID = :event_id';
@@ -88,7 +94,8 @@ class events_db {
 		return $row;
 	}
 
-	public static function update_event($event) {
+	public static function update_event($event_id, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink)
+	{
 		$db = Database::getDB();
 		$query = 'UPDATE event
               SET Date = :Date,
@@ -99,7 +106,8 @@ class events_db {
 			  Title = :Title,
 			  Venue = :Venue
 			  WHERE eventID= :event_id';
-		try {
+		try
+		{
 			$statement = $db->prepare($query);
 			$statement->bindValue(':Title', $Title);
 			$statement->bindValue(':Location', $Location);
@@ -108,13 +116,15 @@ class events_db {
 			$statement->bindValue(':Date', $Date);
 			$statement->bindValue(':Time', $Time);
 			$statement->bindValue(':imageLink', $imageLink);
-			$statement->bindValue(':event_id', $eventID);
+			$statement->bindValue(':event_id', $event_id);
 			$row_count = $statement->execute();
 
 			$statement->closeCursor();
 
 			return $row_count;
-		} catch (PDOException $e) {
+		}
+		catch (PDOException $e)
+		{
 			$error_message = $e->getMessage();
 			display_db_error($error_message);
 		}

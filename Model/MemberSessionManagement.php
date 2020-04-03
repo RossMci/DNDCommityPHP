@@ -1,43 +1,43 @@
 <?php
 
-declare(strict_types=1);
-require_once("admin.php");
+//declare(strict_types=1);
+require_once("member.php");
 
-class AdminSessionManagement
+class MemberSessionManagement
 {
 
-	public const AdminSessionKey = "user";
+	public const MemberSessionKey = "member";
 
-	public static function HandleAdminAccess()
+	public static function HandleMemberAccess()
 	{
-		if (!self::AdminIsLoggedIn())
+		if (!self::MemberIsLoggedIn())
 		{
-			header('Location: ../Login/mangment-login.php');
+			header('Location: ../Login/Login.php');
 //			echo "<h1>No User logged in, redirecting...<h1>";
 		}
 	}
 
-	public static function AdminIsLoggedIn(): bool
+	public static function MemberIsLoggedIn(): bool
 	{
-		return self::GetCurrentAdmin() != null;
+		return self::GetCurrentMember() != null;
 	}
 
-	public static function GetCurrentAdmin(): ?UserAccount
+	public static function GetCurrentMember(): ?member
 	{
-		if (isset($_SESSION[self::AdminSessionKey]))
-			return $_SESSION[self::AdminSessionKey];
+		if (isset($_SESSION[self::MemberSessionKey]))
+			return $_SESSION[self::MemberSessionKey];
 		else
 			return null;
 	}
 
-	public static function LoginAdmin(admin $admin)
+	public static function LoginMember(member $member)
 	{
-		$_SESSION[self::AdminSessionKey] = $admin;
+		$_SESSION[self::MemberSessionKey] = $member;
 	}
 
-	public static function LogoutCurrentAdmin()
+	public static function LogoutCurrentMember()
 	{
-		$_SESSION[self::AdminSessionKey] = null;
+		$_SESSION[self::MemberSessionKey] = null;
 	}
 
 }

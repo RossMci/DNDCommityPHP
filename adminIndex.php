@@ -20,7 +20,7 @@ if ($action == NULL)
 if ($action == 'managentdetials')
 {
 	$members = MemberRepository::getMembers();
-	include(WebsitePages:: managentdetials);
+	include('managentdetials.php');
 }
 else if ($action == 'delete_member')
 {
@@ -33,7 +33,7 @@ else if ($action == 'delete_member')
 else if ($action == 'viewEvents')
 {
 	$events = events_db::getEvents();
-	include(WebsitePages::currentEvents);
+	include('current-events.php');
 }
 else if ($action == 'deleteEvent')
 {

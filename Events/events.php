@@ -1,5 +1,4 @@
-<?php
-?>
+<?php ?>
 
 <!DOCTYPE HTML>
 <html lang= en> 
@@ -7,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>club Events</title>
-        <link href="../dndstyle.css" rel="stylesheet" type="text/css">
+                <link href="<?php echo WebsitePages::dndStyle; ?>" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,15 +21,12 @@
                 <div id="menu">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <a href="../member/member-account-detials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
-						<a href="../Login/mangment-login.php">Admin</a>
-                            <a href="member/index.php">Sign up</a>
-                            <a href="../Login/Login.php">Login</a>
-						<!--                        <a href="../Campaigns/campaigns.php">Campaigns</a>
-												<a href="../member/joined-campaigns.php"> Joined Campaigns</a>-->
-                        <a href="../Events/index.php?action=DisplayEvent"> Club Events</a>
-						<!--                        <a href="../Host/Add-campaigns.php">Add campaign </a>
-												<a href="../Host/host-current-campaigns.php">current-campaign</a>-->
+                        <a href="<?php echo WebsitePages::memberAccount; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
+						<a href="<?php echo WebsitePages::adminLogin; ?>">Admin</a>
+						<a href="<?php echo WebsitePages::memberSignUp; ?>">Sign up</a>
+						<a href="<?php echo WebsitePages::memberLogin; ?>">Login</a>
+						<a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent"> Club Events</a>
+
                     </div>
                 </div>
                 <div id="menu-contents">
@@ -38,8 +34,8 @@
                 </div>
 
                 <div id="logo">
-                    <a href="../index.php">
-                        <img src="../images/dndlogo3.png" alt="dndlogo">
+					<a href="<?php echo WebsitePages::homeIndex; ?>"> 
+						<img src="<?php echo WebsitePages::images; ?>dndlogo3.png" alt="dndlogo">
                     </a>
 
                     <h3>COMMUNITY </h3>
@@ -52,9 +48,9 @@
                     </div>
 
                     <div id="register-login">
-                        <a href="createMember.html" id="Register1">Sign up</a>
-                        <a href="Login.html" id="Register2">Login</a>
-                    </div>
+                                <a href="<?php echo WebsitePages::memberIndex; ?>?action=createMember" id="Register1">Sign up</a>
+                                <a href="<?php echo WebsitePages::loginIndex; ?>?action=logout" id="Register2">Login out </a>
+                            </div>
                 </div>
             </div>
         </header>
@@ -99,7 +95,7 @@
             </footer>
         </div>
 
-        <script src="../js/dnd.js"></script>
+        <script src="<?php echo WebsitePages::javaScript; ?>"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
@@ -107,6 +103,6 @@
 									function sweet() {
 										swal.fire("Resevation Complete!", "give your email too the register desk too reduce registeration time!\nOnly works if your logged in as member", "success");
 									}
-									
+
 		</script>
     </body></html>	
