@@ -1,10 +1,10 @@
 <?php
-
-require_once('../Model/database.php');
-require_once('../Model/member.php');
-require_once('../Model/MemberRepository.php');
-require_once('../Model/events.php');
-require_once('../Model/events_db.php');
+require_once('phpsrc/WebsitePages.php');
+require_once('Model/database.php');
+require_once('Model/member.php');
+require_once('Model/MemberRepository.php');
+require_once('Model/events.php');
+require_once('Model/events_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 
@@ -20,27 +20,26 @@ if ($action == NULL)
 if ($action == 'managentdetials')
 {
 	$members = MemberRepository::getMembers();
-	include('managentdetials.php');
+	include(WebsitePages:: managentdetials);
 }
 else if ($action == 'delete_member')
 {
 	$member_id = filter_input(INPUT_POST, 'member_id', FILTER_VALIDATE_INT);
 
-	member_db::DeleteMember($member_id);
+	MemberRepository::DeleteMember($member_id);
 
-	header('Location: index.php');
+	header("Location: " . WebsitePages::adminIndex . "");
 }
 else if ($action == 'viewEvents')
 {
 	$events = events_db::getEvents();
-	include('current-events.php');
+	include(WebsitePages::currentEvents);
 }
 else if ($action == 'deleteEvent')
 {
 	$event_id = filter_input(INPUT_POST, 'event_id', FILTER_VALIDATE_INT);
 
 	events_db::DeleteEvent($event_id);
-
-	header("Location: index.php?action=viewEvents");
+    header("Location: " . WebsitePages::adminIndex . "?action=viewEvents");
 }
 ?>

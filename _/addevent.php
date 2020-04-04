@@ -36,7 +36,7 @@ else
                 <div id="menu">
                     <div id="mySidenav" class="sidenav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                                <a href="<?php echo WebsitePages::managentdetialsIndex; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
+                                <a href="<?php echo WebsitePages::managentdetials; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
                                 <a href="<?php echo WebsitePages::adminIndex; ?>?action=viewEvents">current events</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=createEvent">Add event</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent">Events</a>
@@ -95,7 +95,7 @@ else
                                     <label>Title:</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="text"  name="Title" placeholder="Enter event location" value="<?php echo $event['Title']; ?>">
+                                    <input type="text"  name="Title" placeholder="Enter event location" value="<?php echo $event->getTitle(); ?>">
                                 </div>
                             </div>
 
@@ -104,7 +104,7 @@ else
                                     <label>Description:</label>
                                 </div>
                                 <div class="col-75">
-                                    <textarea name="Description" rows="4" cols="50" ><?php echo $event['Description']; ?> </textarea>
+                                    <textarea name="Description" rows="4" cols="50" ><?php echo $event->getDescription(); ?> </textarea>
                                 </div>
                             </div>
 
@@ -113,7 +113,7 @@ else
                                     <label>Venue:</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="text" name="Venue" placeholder="Enter event location"  value="<?php echo $event['Venue']; ?>">
+                                    <input type="text" name="Venue" placeholder="Enter event location"  value="<?php echo $event->getVenue(); ?>">
                                 </div>
                             </div>
 
@@ -122,7 +122,7 @@ else
                                     <label>Date:</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="text" name="Date" placeholder="Enter event location"  value="<?php echo $event['Date']; ?>">
+                                    <input type="text" name="Date" placeholder="Enter event location"  value="<?php echo $event->getDate(); ?>">
                                 </div>
                             </div>
                             <div class="row8">
@@ -130,7 +130,7 @@ else
                                     <label>Time:</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="text" name="Time" placeholder="Enter event location"  value="<?php echo $event['Time']; ?>">
+                                    <input type="text" name="Time" placeholder="Enter event location"  value="<?php echo $event->getTime(); ?>">
                                 </div>
                             </div>
 
@@ -139,7 +139,7 @@ else
                                     <label>Location:</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="text" name="Location" placeholder="Enter event location" value="<?php echo $event['Location']; ?>">
+                                    <input type="text" name="Location" placeholder="Enter event location" value="<?php echo $event->getLocation()	; ?>">
                                 </div>
                             </div>
                             <div id="add-event">

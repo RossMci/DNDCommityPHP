@@ -16,7 +16,7 @@ class events
 
 	private $eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink, $imageData;
 
-	public function events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink)
+	public function events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location)
 	{
 		$this->eventID = $eventID;
 		$this->Title = $Title;
@@ -25,7 +25,9 @@ class events
 		$this->Date = $Date;
 		$this->Time = $Time;
 		$this->Location = $Location;
-		$this->imageLink = $imageLink;
+		$this->imageLink = "";
+		$this->imageData="";
+		
 	}
 
 	public function getImageData()
@@ -108,12 +110,12 @@ class events
 		$this->Location = $value;
 	}
 
-	function getimageLink()
+	function getImageName()
 	{
 		return $this->imageLink;
 	}
 
-	function setimageLink($value)
+	function setImageName($value)
 	{
 		$this->imageLink = $value;
 	}

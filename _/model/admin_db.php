@@ -3,7 +3,7 @@
 class AdminRepoidtory
 {
 
-	public static function getEvents()
+	public static function getAdmins()
 	{
 		$db = Database::getDB();
 		$query = 'SELECT * FROM dndadmin';
@@ -13,7 +13,7 @@ class AdminRepoidtory
 		$adminList = array();
 		foreach ($statement as $row)
 		{
-			$adminList[] = AdminRepoidtory::Transform($row);
+			$adminList[] = self::Transform($row);
 		}
 		return $adminList;
 	}
@@ -36,7 +36,7 @@ class AdminRepoidtory
 		$statement->closeCursor();
 		if ($count > 0)
 		{
-			return AdminRepoidtory::Transform($row);
+			return self::Transform($row);
 		}
 		else
 		{
@@ -66,7 +66,7 @@ class AdminRepoidtory
 
 		if ($count > 0)
 		{
-			return AdminRepoidtory::Transform($row);
+			return self::Transform($row);
 		}
 		else
 		{

@@ -21,7 +21,8 @@ class MemberRepository
 
 	protected static function Transform($row): ?member
 	{
-		return new member($row['Fname'], $row['memberID'], $row['Lname'], $row['memberPassword'], $row['userName'], $row['PhoneNumber'], $row['memberEmail'], $row['hostAccess']);
+		$member=new member($row['Fname'], $row['memberID'], $row['Lname'], $row['memberPassword'], $row['userName'], $row['PhoneNumber'], $row['memberEmail'], $row['hostAccess']);
+		return $member;
 	}
 
 	public static function getmember($member_id): ?member
@@ -32,11 +33,12 @@ class MemberRepository
 		$statement = $db->prepare($query);
 		$statement->bindValue(":member_id", $member_id);
 		$statement->execute();
+		$count = $statement->rowCount();
 		$row = $statement->fetch();
 		$statement->closeCursor();
 		if ($count > 0)
 		{
-			return AdminRepoidtory::Transform($row);
+			return self::Transform($row);
 		}
 		else
 		{

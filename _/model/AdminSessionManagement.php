@@ -12,7 +12,7 @@ class AdminSessionManagement
 	{
 		if (self::AdminIsNotLoggedIn())
 		{
-			echo "<h1>No User logged in, redirecting...</h1>";
+//			echo "<h1>No User logged in, redirecting...</h1>";
 //			header('Location: ../Login/mangment-login.php');
 		}
 		else
