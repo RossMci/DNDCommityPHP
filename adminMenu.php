@@ -31,6 +31,7 @@ AdminSessionManagement::HandleAdminAccess();
                                 <a href="<?php echo WebsitePages::currentEvents; ?>?action=viewEvents">current events</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=createEvent">Add event</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent">Events</a>
+							 <a href="<?php echo WebsitePages::loginIndex; ?>?action=admin_registration">Add admin</a>
                             </div>
                         </div>
                         <div id="menu-contents">
@@ -66,7 +67,10 @@ AdminSessionManagement::HandleAdminAccess();
 				<br>
 				<a href="<?php echo WebsitePages::adminIndex; ?>?action=managentdetials">member List</a>
 				<br>
-				<a href="<?php echo WebsitePages::adminIndex; ?>?action=admin_registration">Add Admin</a>
+				<a href="<?php echo WebsitePages::loginIndex; ?>?action=admin_registration">Add Admin</a>
+				<br>
+				
+					<a href="<?php echo WebsitePages::loginIndex; ?>?action=admin_registration">Add Admin</a>
 				<br>
 
 			</div>

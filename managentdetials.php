@@ -29,7 +29,7 @@ AdminSessionManagement::HandleAdminAccess();
                             <div id="menu">
                                 <div id="mySidenav" class="sidenav">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                                <a href="<?php echo WebsitePages::managentdetialsIndex; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>                   
+                                <a href="<?php echo WebsitePages::managentdetials; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>                   
                                 <a href="<?php echo WebsitePages::adminIndex; ?>?action=viewEvents">current events</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=createEvent">Add event</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent">Events</a>

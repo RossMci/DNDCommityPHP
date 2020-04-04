@@ -104,7 +104,7 @@ AdminSessionManagement::HandleAdminAccess();
 
 											<input type="submit" value="Update">
 										</form></td>
-									<td><form action="<?php echo WebsitePages::adminIndex; ?>" method="post"
+									<td><form action="." method="post"
 											  id="delete_event_form">
 											<input type="hidden" name="action"
 												   value="deleteEvent">

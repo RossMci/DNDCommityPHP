@@ -16,7 +16,7 @@ class WebsitePages
 	public const adminCurrentEvents = "current-events.php";
 	public const managentdetials = "managentdetials.php";
 	public const loginIndex = "loginindex.php";
-	public const memberLogin = "login.php";
+	public const memberLogin = "Login.php";
 	public const adminLogin = "mangment-login.php";
 	public const eventIndex = "eventsindex.php";
 	public const images = "images/";

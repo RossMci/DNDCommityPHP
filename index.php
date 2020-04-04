@@ -26,7 +26,7 @@ require_once ('phpsrc/WebsitePages.php');
 							<div id="mySidenav" class="sidenav">
 								<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 	<!--                            <a href="member/member-account-detials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>-->
-								<a href="<?php echo WebsitePages::memberAccount; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
+<!--								<a href="<?php //echo WebsitePages::memberAccount; ?>"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>-->
 								<a href="<?php echo WebsitePages::adminLogin; ?>">Admin</a>
 								<a href="<?php echo WebsitePages::memberSignUp; ?>">Sign up</a>
 								<a href="<?php echo WebsitePages::memberLogin; ?>">Login</a>
@@ -52,7 +52,7 @@ require_once ('phpsrc/WebsitePages.php');
 
 							<div id="register-login">
 								<a href="<?php echo WebsitePages::memberIndex; ?>?action=createMember" id="Register1">Sign up</a>
-								<a href="Login/Login.php" id="Register2">Login</a>
+								<a href="<?php echo WebsitePages::memberLogin; ?>" id="Register2">Login</a>
 							</div>
 						</div>
 					</div>

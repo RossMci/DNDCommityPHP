@@ -2,9 +2,9 @@
 <?php
 
 require_once ('phpsrc/WebsitePages.php');
-require('Model/database.php');
-require('Model/events.php');
-require('Model/events_db.php');
+require('model/database.php');
+require('model/events.php');
+require('model/events_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL)
@@ -24,8 +24,12 @@ if ($action == 'add_edit_event_form')
 	{
 		$event_id = filter_input(INPUT_POST, 'event_id');
 	}
-	$event = events_db::getEvent($event_id);
-
+	$event = events_db::getEventById($event_id);
+if($event==null)
+{
+	$event = new events("", "", "", "", "", "", "", "");
+		
+}
 	include(WebsitePages::addEvent);
 }
 else if ($action == 'update_event')
@@ -41,13 +45,13 @@ else if ($action == 'update_event')
 	$imageLink = $_FILES["imageLink"]["name"];
 
 	events_db::update_event($event_id, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink);
-	header("Location: adminindex.php?action=viewEvents");
+	header("Location: adminindex?action=viewEvents");
 }
-elseif ($action == 'DisplayEvent')
+elseif ($action == 'DisplayEvent')	
 {
 	$events = events_db::getEvents();
 	include('events.php');
-}
+} 
 else if ($action == 'createEvent')
 {
 	$eventID = filter_input(INPUT_POST, 'eventID');
@@ -88,7 +92,7 @@ else if ($action == 'createEvent')
 					$fileNameNew = uniqid('', true) . "." . $fileActualExt;
 					$fileDestination = 'images/' . $fileNameNew;
 //                move_uploaded_file($fileTmpName,  $fileDestination);
-					$event->setImageData(base64_encode(file_get_contents($imageLink['tmp_name'])));
+					$event->setImageData(base64_encode(file_get_contents($fileTmpName)));
 				}
 				else
 				{

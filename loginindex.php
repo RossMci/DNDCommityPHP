@@ -48,7 +48,7 @@ switch ($action)
 
 		break;
 	case 'viewEvents':
-		echo "<h1>blah</h1>";
+	
 //		include('../Admin/index.php');
 		header('Location: adminindex.php?action=viewEvents');
 		break;
@@ -65,7 +65,7 @@ switch ($action)
 		$firstname = filter_input(INPUT_POST, 'firstname');
 		$lastname = filter_input(INPUT_POST, 'lastname');
 		add_admin($user_name, $password, $firstname, $lastname);
-		include('adminMenu.php');
+         include('adminMenu.php');
 		break;
 	case 'logout':
 		AdminSessionManagement::LogoutCurrentAdmin();

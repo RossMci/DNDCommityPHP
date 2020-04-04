@@ -1,7 +1,5 @@
 <?php
 require_once ('phpsrc/WebsitePages.php');
-
-
 ?>
 <!DOCTYPE HTML>
 <html lang= en>
@@ -24,8 +22,9 @@ require_once ('phpsrc/WebsitePages.php');
 				<div id="menu">
 					<div id="mySidenav" class="sidenav">
 						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-						<a href="../member/member-account-detials.php"><i class="fa fa-user-circle" id="usericon" style="font-size:24px"></i></a>
-						<a href="../Events/events.php"> Club Events</a>
+						<a href="<?php echo WebsitePages::adminLogin; ?>">Admin</a>
+						<a href="<?php echo WebsitePages::memberSignUp; ?>">Sign up</a>
+						<a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent"> Club Events</a>
 					</div>
 				</div>
 				<div id="menu-contents">
@@ -33,8 +32,8 @@ require_once ('phpsrc/WebsitePages.php');
 				</div>
 
 				<div id="logo">
-					<a href="../index.php">
-						<img src="../images/dndlogo3.png" alt="dndlogo">
+						<a href="<?php echo WebsitePages::homeIndex; ?>"> 
+						<img src="<?php echo WebsitePages::images; ?>dndlogo3.png" alt="dndlogo">
 					</a>
 					<h3>COMMUNITY </h3>
 				</div>
@@ -72,7 +71,7 @@ require_once ('phpsrc/WebsitePages.php');
 							<button onclick="window.location.href = '<?php echo WebsitePages::memberIndex ?>';" type="button" class="cancelbtn "><span>Login</span></button>
 						</div>
 						<div class="button-container">
-							<button onclick="window.location.href = <?php echo WebsitePages::homeIndex; ?>';" type="button" class="cancelbtn "><span>Cancel</span></button>
+							<button onclick="window.location.href =' <?php echo WebsitePages::homeIndex; ?>';" type="button" class="cancelbtn "><span>Cancel</span></button>
 						</div>
 					</div>
 				</form>

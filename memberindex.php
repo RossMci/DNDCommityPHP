@@ -56,19 +56,20 @@ else if ($action == 'create_member')
 	$memberEmail = filter_input(INPUT_POST, 'memberEmail');
 	$memberPassword = filter_input(INPUT_POST, 'memberPassword');
 	$hostAccess = filter_input(INPUT_POST, 'hostAccess');
-
+    
 
 	if ($Fname == NULL || $Lname == NULL || $memberEmail == NULL || $PhoneNumber == NULL || $userName == NULL || $memberPassword == NULL)
 	{
 		$error = "Invalid user data. Check all fields and try again.";
-		include('../errors/error.php');
+		include('errors/error.php');
+		
 	}
 	else
 	{
 
 		$member = new member($memberID, $Fname, $Lname, $userName, $PhoneNumber, $memberEmail, $memberPassword, $hostAccess);
 		memberrepository::createmember($member);
-		header("Location: /DNDCommityPHP/member/index.php");
+		header("Location: memberindex.php");
 	}
 }
 ?>
