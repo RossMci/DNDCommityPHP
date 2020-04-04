@@ -85,7 +85,7 @@ AdminSessionManagement::HandleAdminAccess();
 									<td><?php echo $event->getDate(); ?></td>
 									<td><?php echo $event->getTime(); ?></td>
 									<td><?php echo $event->getLocation(); ?></td>
-									<td><?php echo $event->getimageLink(); ?></td>
+									<td><?php echo $event->getImageName(); ?></td>
 									<td>
 										<?php
 										if ($event->getImageData() != null)

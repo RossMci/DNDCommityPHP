@@ -6,7 +6,9 @@ class WebsiteDetails
 	public const Title = "DND Community";
 
 }
-
+/**
+ * Webpage directory for the website
+ */
 class WebsitePages
 {
 

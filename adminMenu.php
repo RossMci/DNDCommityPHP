@@ -70,7 +70,7 @@ AdminSessionManagement::HandleAdminAccess();
 				<a href="<?php echo WebsitePages::loginIndex; ?>?action=admin_registration">Add Admin</a>
 				<br>
 				
-					<a href="<?php echo WebsitePages::loginIndex; ?>?action=admin_registration">Add Admin</a>
+					<a href="<?php echo WebsitePages::adminIndex; ?>?action=adminList">Admin list </a>
 				<br>
 
 			</div>
