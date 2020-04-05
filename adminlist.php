@@ -64,7 +64,7 @@ AdminSessionManagement::HandleAdminAccess();
                         </div>
                         <table>
                             <tr>
-                                <th>EventID</th>
+                                <th>Event ID</th>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Venue</th>
@@ -76,7 +76,6 @@ AdminSessionManagement::HandleAdminAccess();
                                 <th>Update Event</th>
                                 <th>Delete Event</th>
                             </tr>
-							<?php foreach ($events as $event) : ?>
 								<tr>
 									<td><?php echo $event->geteventID(); ?></td>
 									<td><?php echo $event->getTitle(); ?></td>
@@ -115,7 +114,7 @@ AdminSessionManagement::HandleAdminAccess();
 										</form></td>
 
 								</tr>
-							<?php endforeach; ?>
+							<?php// endforeach; ?>
                         </table>
 
                         <button onclick="window.location.href = '<?php echo WebsitePages::eventIndex; ?>';" type="button"><span> Add a Event</span></button>

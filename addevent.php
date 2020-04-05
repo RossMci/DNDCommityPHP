@@ -40,6 +40,7 @@ else
                                 <a href="<?php echo WebsitePages::adminIndex; ?>?action=viewEvents">current events</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=createEvent">Add event</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent">Events</a>
+							 <a href="<?php echo WebsitePages::loginIndex; ?>?action=show_admin_menu">Admin Menu</a>
                     </div>
                 </div>
                 <div id="menu-contents">

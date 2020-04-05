@@ -90,13 +90,16 @@ require_once ('phpsrc/WebsitePages.php');
             </div>
 
             <div id="aboutus">
-                <h2> Club Foundation goals </h2>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                <h2> Welcome to the website </h2>
+                <p> Here's I bit about our website we aim too being the DND community together and have lots of fun.</p>
+				<p>  So come too our events during the year come too the events but tickets do run out so you can </p>
+				<p>save a space here. So come join us and help us grow the community.</p>
+			
 
             </div>
 
 
-            <div class="slideshow-container">
+<!--            <div class="slideshow-container">
                 <h2> Popular Events at our club</h2>
                 <div class="row2">
                     <div class="mySlides fade">
@@ -137,7 +140,7 @@ require_once ('phpsrc/WebsitePages.php');
 				<p> text about the event</p>
 				<h3>Time:</h3>
 				<p> text about the event</p>
-            </div>
+            </div>-->
         </div>
         <footer class="footer">
         </footer>

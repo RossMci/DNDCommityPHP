@@ -33,6 +33,7 @@ AdminSessionManagement::HandleAdminAccess();
                                 <a href="<?php echo WebsitePages::adminIndex; ?>?action=viewEvents">current events</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=createEvent">Add event</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent">Events</a>
+							 <a href="<?php echo WebsitePages::loginIndex; ?>?action=show_admin_menu">Admin Menu</a>
                                 </div>
                             </div>
                             <div id="menu-contents">
@@ -119,7 +120,7 @@ AdminSessionManagement::HandleAdminAccess();
 										<td><?php echo $member->getmemberPassword(); ?></td>
 										<td><?php echo $member->gethostAccess(); ?></td>
 										<td> <form><input type="submit" value="view"></form></td>
-										<td><form action="." method="post"
+										<td><form action="<?php echo WebsitePages::adminIndex; ?>" method="post"
 												  id="delete_member_form">
 												<input type="hidden" name="action"
 													   value="delete_member">

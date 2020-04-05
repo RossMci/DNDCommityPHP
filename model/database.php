@@ -37,7 +37,7 @@ class database
 			catch (PDOException $e)
 			{
 				$error_message = $e->getMessage();
-				include('../errors/database_error.php');
+				include('errors/database_error.php');
 				exit();
 			}
 		}
@@ -60,7 +60,7 @@ try
 catch (PDOException $e)
 {
 	$error = $e->getMessage();
-	include('../errors/error.php');
+	include('errors/error.php');
 	exit();
 }
 ?>

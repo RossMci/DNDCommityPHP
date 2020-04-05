@@ -6,6 +6,9 @@ require_once('Model/AdminSessionManagement.php');
 require_once('Model/database.php');
 require_once('Model/admin_db.php');
 require_once('Model/admin.php');
+require_once ('Model/UserAccessLevel.php');
+require_once ('phpsrc/WebsitePages.php');
+
 
 $login_message = "";
 // Get the action to perform
@@ -29,21 +32,21 @@ if (!isset($_SESSION['is_valid_admin']))
 switch ($action)
 {
 	case 'loginMemeber':
-		$user_name = filter_input(INPUT_POST, 'user_name');
-		$password = filter_input(INPUT_POST, 'password');
+		$user_name = filter_input(INPUT_POST, 'userName');
+		$password = filter_input(INPUT_POST, 'memberPassword');
 		//$admin = AdminRepoidtory::getAdminById(9);
-		$admin = AdminRepoidtory::VerifyUser($user_name, $password);
-		if ($admin != null)
+		$member = memberRepoidtory::VerifyUser($userName, $memberPassword);
+		if ($member != null)
 		{
-			$_SESSION['is_valid_admin'] = true;
-			$_SESSION["Admin"] = $admin;
+			$_SESSION['is_valid_member'] = true;
+			$_SESSION["Member"] = $member;
 //			echo "<h1>loggin in</h1>" . $admin->getUsername();
-			include('adminMenu.php');
+			include('member-account-detials.php');
 		}
 		else
 		{
-			$login_message = "#" . $user_name . 'You must login to view this page.';
-			include('mangment-login.php');
+			$login_message = "#" . $userName . 'You must login to view this page.';
+			include('.php');
 		}
 
 		break;
@@ -54,7 +57,8 @@ switch ($action)
 		break;
 
 	case 'show_admin_menu':
-		include('AdminMenu.php');
+		echo "<h1>"."here"."</h1>";
+		include('adminMenu.php');
 		break;
 	case 'admin_registration' :
 		include('addAdmin.php');
@@ -70,7 +74,7 @@ switch ($action)
 	case 'logout':
 		AdminSessionManagement::LogoutCurrentAdmin();
 		$login_message = 'You have been logged out.';
-		include('mangment-login.php');
+		include(WebsitePages::adminLogin);
 		break;
 
 	case 'login':
@@ -82,12 +86,19 @@ switch ($action)
 		{
 			AdminSessionManagement::LoginAdmin($admin);
 			$_SESSION['is_valid_admin'] = true;
-			include('adminMenu.php');
+			if($admin->getUserAccessLevel()==UserAccessLevel::Admin)
+			{
+			include(WebsitePages::adminMenu);
+			}
+			else
+			{
+				include (WebsitePages::memberAccount);	
+			}
 		}
 		else
 		{
 			$login_message = "#" . $user_name . 'You must login to view this page.';
-			include('mangment-login.php');
+			include(WebsitePages::adminLogin);
 		}
 
 

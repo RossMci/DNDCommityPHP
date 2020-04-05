@@ -68,7 +68,7 @@ require_once ('phpsrc/WebsitePages.php');
 						<div class="button-container">
 	<!--                        <button type="submit" name="submit" id="submit" value="submit"><span>Login</span></button>-->
 <!--	                       <input class="btn2"  type="submit" value="Login">-->
-							<button onclick="window.location.href = '<?php echo WebsitePages::memberIndex ?>';" type="button" class="cancelbtn "><span>Login</span></button>
+							<button onclick="window.location.href = '<?php echo WebsitePages::loginIndex ?>';" type="button" class="cancelbtn "><span>Login</span></button>
 						</div>
 						<div class="button-container">
 							<button onclick="window.location.href =' <?php echo WebsitePages::homeIndex; ?>';" type="button" class="cancelbtn "><span>Cancel</span></button>

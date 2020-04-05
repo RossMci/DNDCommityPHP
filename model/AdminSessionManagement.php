@@ -2,6 +2,66 @@
 
 //declare(strict_types=1);
 require_once("admin.php");
+require_once ("UserAccessLevel.php");
+
+use admin as UserAccount;
+
+class UserSessionManagement
+{
+
+	public static function HandleAdminUserAccess()
+	{
+		if (self::UserIsNotLoggedIn())
+		{
+			echo "<h1>No User logged in, redirecting... redirect failed.  Security breached.<h1>";
+		}
+		else
+		{
+			$user = GetCurrentUser();
+			if ($user->getUserAccessLevel() != UserAccessLevel::Admin)
+			{
+				echo "<h1>User has entered a restricted area for Admins only.<h1>";
+			}
+		}
+	}
+
+	public static function HandleUserAccess()
+	{
+		if (self::UserIsNotLoggedIn())
+		{
+			echo "<h1>No User logged in, redirecting... redirect failed.  Security breached.<h1>";
+		}
+	}
+
+	public static function UserIsNotLoggedIn(): bool
+	{
+		return self::GetCurrentUser() == null;
+	}
+
+	public static function UserIsLoggedIn(): bool
+	{
+		return self::GetCurrentUser() != null;
+	}
+
+	public static function GetCurrentUser(): ?UserAccount
+	{
+		if (isset($_SESSION[SessionKeys::User]))
+			return $_SESSION[SessionKeys::User];
+		else
+			return null;
+	}
+
+	public static function LoginUser(UserAccount $userAccount)
+	{
+		$_SESSION[SessionKeys::User] = $userAccount;
+	}
+
+	public static function LogoutCurrentUser()
+	{
+		$_SESSION[SessionKeys::User] = null;
+	}
+
+}
 
 class AdminSessionManagement
 {
@@ -32,7 +92,7 @@ class AdminSessionManagement
 	{
 		return self::GetCurrentAdmin() == null;
 	}
-	
+
 	public static function GetCurrentAdmin()//: ?admin
 	{
 		if (isset($_SESSION[self::AdminSessionKey]))
@@ -48,7 +108,7 @@ class AdminSessionManagement
 
 	public static function LogoutCurrentAdmin()
 	{
-		echo'<h1>logout called</h1>';
+//		echo'<h1>logout called</h1>';
 		$_SESSION[self::AdminSessionKey] = null;
 	}
 

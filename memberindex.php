@@ -1,9 +1,9 @@
-
+	
 <?php
 
-require('Model/database.php');
-require('Model/member.php');
-require('Model/memberrepository.php');
+require('model/database.php');
+require('model/member.php');
+require('model/memberrepository.php');
 
 
 $action = filter_input(INPUT_POST, 'action');

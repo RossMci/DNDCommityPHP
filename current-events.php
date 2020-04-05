@@ -9,10 +9,10 @@ AdminSessionManagement::HandleAdminAccess();
     <head>
         <meta charset="utf-8">
         <title>Current Event Details</title>
-         <link href="<?php echo WebsitePages::dndStyle; ?>" rel="stylesheet" type="text/css">
+		<link href="<?php echo WebsitePages::dndStyle; ?>" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       <script src="<?php echo WebsitePages::javaScript; ?>"></script>
+		<script src="<?php echo WebsitePages::javaScript; ?>"></script>
         <script src="jquery-ui-1.12.1.custom"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
@@ -31,6 +31,7 @@ AdminSessionManagement::HandleAdminAccess();
                                 <a href="<?php echo WebsitePages::adminIndex; ?>?action=viewEvents">current events</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=add_edit_event_form">Add event</a>
                                 <a href="<?php echo WebsitePages::eventIndex; ?>?action=DisplayEvent">Events</a>
+								<a href="<?php echo WebsitePages::loginIndex; ?>?action=show_admin_menu">Admin Menu</a>
                             </div>
                         </div>
                         <div id="menu-contents">
@@ -51,7 +52,7 @@ AdminSessionManagement::HandleAdminAccess();
                             </div>
 
                             <div id="register-login">
-                                     <a href="<?php echo WebsitePages::memberIndex; ?>?action=createMember" id="Register1">Sign up</a>
+								<a href="<?php echo WebsitePages::memberIndex; ?>?action=createMember" id="Register1">Sign up</a>
                                 <a href="<?php echo WebsitePages::loginIndex; ?>?action=logout" id="Register2">Login out </a>
                             </div>
                         </div>
@@ -130,7 +131,7 @@ AdminSessionManagement::HandleAdminAccess();
             </div>
 
             <footer class="footer">
-                
+
             </footer>
         </div>
     </body></html>	

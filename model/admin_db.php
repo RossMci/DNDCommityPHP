@@ -20,14 +20,15 @@ class AdminRepoidtory
 
 	protected static function Transform($row): ?admin
 	{
-		return new admin($row['firstName'], $row['AdminID'], $row['lastName'], $row['password'], $row['user_name']);
+		$admin= new admin($row['firstName'], $row['AdminID'], $row['lastName'], $row['password'], $row['user_name']);
+		$admin->setUserAccessLevel($row["UserAccessLevel"]);
+		return $admin;
 	}
 
 	public static function getAdminById($id): ?admin
 	{
 		$db = Database::getDB();
-		$query = 'SELECT * FROM dndadmin
-                  WHERE adminId = :adminId';
+		$query = 'SELECT * FROM dndadmin WHERE adminId = :adminId';
 		$statement = $db->prepare($query);
 		$statement->bindValue(":adminId", $id);
 		$statement->execute();
@@ -81,8 +82,8 @@ class AdminRepoidtory
 
 		$hash = hash('ripemd160', $password);
 		echo '<h1>' . $hash . '</h1>';
-		$query = 'INSERT INTO dndadmin (user_name, password,firstName, lastName)
-              VALUES (:user_name, :password,:firstName, :lastName)';
+		$query = 'INSERT INTO dndadmin (user_name, password,firstName, lastName, UserAccessLevel)
+              VALUES (:user_name, :password,:firstName, :lastName, 1)';
 		$statement = $db->prepare($query);
 		$statement->bindValue(':user_name', $user_name);
 		$statement->bindValue(':password', $hash);

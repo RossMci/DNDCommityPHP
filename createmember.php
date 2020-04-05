@@ -50,8 +50,8 @@ require_once ('phpsrc/WebsitePages.php');
                         <input type="password" id="password2" name="password2" placeholder="Confirm password">
                         <span id="password2_error"></span><br>
 
-						<p><label for="hostaccess2"> host access</label></p>
-						<input type="checkbox" id="hostaccess2" name="hostAccess">
+<!--						<p><label for="hostaccess2"> host access</label></p>
+						<input type="checkbox" id="hostaccess2" name="hostAccess">-->
 
 
                         <div class="same-line">

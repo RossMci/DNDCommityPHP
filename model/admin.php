@@ -14,9 +14,18 @@
 class admin
 {
 
-	private $id, $firstname, $lastname, $username, $email, $password;
+	private $id, $firstname, $lastname, $username, $email, $password, $userAccessLevel;
+	public function getUserAccessLevel()
+	{
+		return $this->userAccessLevel;
+	}
 
-	public function admin($firstname, $id, $lastname, $password, $username)
+	public function setUserAccessLevel($userAccessLevel): void
+	{
+		$this->userAccessLevel = $userAccessLevel;
+	}
+
+		public function admin($firstname, $id, $lastname, $password, $username)
 	{
 		$this->$id = $id;
 		$this->firstname = $firstname;

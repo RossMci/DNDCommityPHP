@@ -19,16 +19,16 @@ if ($action == NULL)
 
 if ($action == 'managentdetials')
 {
-	$members = MemberRepository::getMembers();
+	$members = memberrepository::getMembers();
 	include(WebsitePages:: managentdetials);
 }
 else if ($action == 'delete_member')
 {
+	echo "<h1>"."hi man"."<h1>";
 	$member_id = filter_input(INPUT_POST, 'member_id', FILTER_VALIDATE_INT);
+	memberrepository::DeleteMember($member_id);
 
-	MemberRepository::DeleteMember($member_id);
-
-	header("Location: " . WebsitePages::adminIndex . "");
+//	header("Location: " . WebsitePages::adminIndex . "?action=managentdetials");
 }
 else if ($action == 'viewEvents')
 {
