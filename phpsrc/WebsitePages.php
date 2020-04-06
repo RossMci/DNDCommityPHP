@@ -6,12 +6,14 @@ class WebsiteDetails
 	public const Title = "DND Community";
 
 }
+
 /**
  * Webpage directory for the website
  */
 class WebsitePages
 {
 
+	public const createMember = "createMember.php";
 	public const addAdmin = "addadmin.php";
 	public const adminMenu = "adminmenu.php";
 	public const adminlist = "adminlist.php";
@@ -34,5 +36,6 @@ class WebsitePages
 	public const currentEvents = "current-events.php";
 	public const addEvent = "addevent.php";
 	public const error = "errors/error.php";
+	public const memberaccountdetials = "member-account-detials.php";
 
 }

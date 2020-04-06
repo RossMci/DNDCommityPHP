@@ -1,9 +1,11 @@
-	
 <?php
 
 require('model/database.php');
-require('model/member.php');
-require('model/memberrepository.php');
+require_once('Model/User.php');
+require_once('Model/UserRepository.php');
+require_once('Model/UserAccessLevel.php');
+require_once('Model/UserSessionManagement.php');
+
 
 
 $action = filter_input(INPUT_POST, 'action');
@@ -18,32 +20,34 @@ if ($action == NULL)
 
 if ($action == 'createMember')
 {
-	include('createMember.php');
+	include(WebSitePages::createMember);
 }
 else if ($action == 'edit_member')
 {
-	$member_id = filter_input(INPUT_POST, 'member_id');
-	$Fname = filter_input(INPUT_POST, 'Fname');
-	$Lname = filter_input(INPUT_POST, 'Lname');
+	$userID = filter_input(INPUT_POST, 'member_id');
+
+	$user = UserRepository::GetUserById($userID);
+// set all fields onm user
+	$usaer->setFirstname(filter_input(INPUT_POST, 'Fname'));
+	$user->setLastname(filter_input(INPUT_POST, 'Lname'));
 	$userName = filter_input(INPUT_POST, 'userName');
-	$PhoneNumber = filter_input(INPUT_POST, 'PhoneNumber',
-			FILTER_VALIDATE_INT);
+	$PhoneNumber = filter_input(INPUT_POST, 'PhoneNumber');
 	$memberEmail = filter_input(INPUT_POST, 'memberEmail');
 	$memberPassword = filter_input(INPUT_POST, 'memberPassword');
-	$hostAccess = filter_input(INPUT_POST, 'hostAccess');
-	memberrepository::update_member($member_id, $Fname, $Lname, $userName, $PhoneNumber, $memberEmail, $memberPassword, $hostAccess);
+	
+	UserRepository::UpdateUser($user);
 }
 else if ($action == 'memberaccount')
 {
-	$member_id = filter_input(INPUT_GET, 'member_id');
+	$userID = filter_input(INPUT_GET, 'member_id');
 
-	if ($member_id == NULL)
+	if ($userID == NULL)
 	{
-		$member_id = filter_input(INPUT_POST, 'member_id');
+		$userID = filter_input(INPUT_POST, 'member_id');
 	}
-	$member = memberrepository::getmember($member_id);
+	$user = UserRepository::GetUsers($userID);
 
-	include('member-account-detials.php');
+	include( WebsitePages::memberaccountdetials);
 }
 else if ($action == 'create_member')
 {
@@ -51,25 +55,25 @@ else if ($action == 'create_member')
 	$Fname = filter_input(INPUT_POST, 'Fname');
 	$Lname = filter_input(INPUT_POST, 'Lname');
 	$userName = filter_input(INPUT_POST, 'userName');
-	$PhoneNumber = filter_input(INPUT_POST, 'PhoneNumber',
-			FILTER_VALIDATE_INT);
+	$PhoneNumber = filter_input(INPUT_POST, 'PhoneNumber');
 	$memberEmail = filter_input(INPUT_POST, 'memberEmail');
 	$memberPassword = filter_input(INPUT_POST, 'memberPassword');
-	$hostAccess = filter_input(INPUT_POST, 'hostAccess');
-    
+	
+
 
 	if ($Fname == NULL || $Lname == NULL || $memberEmail == NULL || $PhoneNumber == NULL || $userName == NULL || $memberPassword == NULL)
 	{
 		$error = "Invalid user data. Check all fields and try again.";
 		include('errors/error.php');
-		
 	}
 	else
 	{
 
-		$member = new member($memberID, $Fname, $Lname, $userName, $PhoneNumber, $memberEmail, $memberPassword, $hostAccess);
-		memberrepository::createmember($member);
-		header("Location: memberindex.php");
+		$user = new User($Fname, $memberID, $Lname, $userName, $PhoneNumber, $memberEmail, $memberPassword);
+		$user->setUserAccessLevel(UserAccessLevel::User);
+
+		UserRepository::CreateUser($user);
+		header("Location: ". WebsitePages::memberIndex);
 	}
 }
 ?>

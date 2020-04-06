@@ -11,12 +11,12 @@
  *
  * @author ross1
  */
-class events
+class Event
 {
 
 	private $eventID, $Title, $Description, $Venue, $Date, $Time, $Location, $imageLink, $imageData;
 
-	public function events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location)
+	public function Event($eventID, $Title, $Description, $Venue, $Date, $Time, $Location)
 	{
 		$this->eventID = $eventID;
 		$this->Title = $Title;

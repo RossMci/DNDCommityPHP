@@ -1,10 +1,9 @@
-
 <?php
 
-require_once ('phpsrc/WebsitePages.php');
-require('model/database.php');
-require('model/events.php');
-require('model/events_db.php');
+require_once('phpsrc/WebsitePages.php');
+require_once('model/database.php');
+require_once('model/Event.php');
+require_once('model/EventRepository.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL)
@@ -24,10 +23,10 @@ if ($action == 'add_edit_event_form')
 	{
 		$event_id = filter_input(INPUT_POST, 'event_id');
 	}
-	$event = events_db::getEventById($event_id);
+	$event = EventRepository::getEventById($event_id);
 	if ($event == null)
 	{
-		$event = new events("", "", "", "", "", "", "");
+		$event = new Event("", "", "", "", "", "", "");
 	}
 	include(WebsitePages::addEvent);
 }
@@ -41,22 +40,22 @@ else if ($action == 'update_event')
 	$Time = filter_input(INPUT_POST, 'Time');
 	$Location = filter_input(INPUT_POST, 'Location');
 
-	events_db::update_event($event_id, $Title, $Description, $Venue, $Date, $Time, $Location);
+	EventRepository::UpdateEvent($event_id, $Title, $Description, $Venue, $Date, $Time, $Location);
 
 
 	$fileName = $_FILES['imageLink']['name'];
-	$eventToUpdate = events_db::getEventById($event_id);
+	$eventToUpdate = EventRepository::getEventById($event_id);
 
 	if ($fileName != "")
 	{
 		HandleImageEncode($_FILES['imageLink'], $eventToUpdate);
-		events_db::UpdateEventImage($eventToUpdate);
+		EventRepository::UpdateEventImage($eventToUpdate);
 	}
 	header("Location: " . WebsitePages::adminIndex . "?action=viewEvents");
 }
 elseif ($action == 'DisplayEvent')
 {
-	$events = events_db::getEvents();
+	$events = EventRepository::getEvents();
 	include(WebsitePages::clubEvents);
 }
 else if ($action == 'createEvent')
@@ -76,7 +75,7 @@ else if ($action == 'createEvent')
 	}
 	else
 	{
-		$event = new events($eventID, $Title, $Description, $Venue, $Date, $Time, $Location);
+		$event = new Event($eventID, $Title, $Description, $Venue, $Date, $Time, $Location);
 
 		$fileName = $_FILES['imageLink']['name'];
 
@@ -84,12 +83,12 @@ else if ($action == 'createEvent')
 		{
 			HandleImageEncode($_FILES['imageLink'], $event);
 		}
-		events_db::createEvent($event);
+		EventRepository::createEvent($event);
 		header("Location: eventsindex.php");
 	}
 }
 
-function HandleImageEncode($postFileImage, events $event)
+function HandleImageEncode($postFileImage, Event $event)
 {
 	$fileName = $postFileImage['name'];
 	$fileServerPath = $postFileImage['tmp_name'];
@@ -103,12 +102,12 @@ function HandleImageEncode($postFileImage, events $event)
 		$error = "There was an error uploading your file!";
 		include('errors/error.php');
 	}
-	else if (!events_db::IsImageValidFileType($fileExt))
+	else if (!EventRepository::IsImageValidFileType($fileExt))
 	{
 		$error = "You cannot Upload files of this type!";
 		include('errors/error.php');
 	}
-	else if (!events_db::IsImageValidFileSize($fileSize))
+	else if (!EventRepository::IsImageValidFileSize($fileSize))
 	{
 		$error = "Your file is too big!";
 		include('errors/error.php');

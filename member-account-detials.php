@@ -1,7 +1,8 @@
 <?php
-require_once ('Model/MemberSessionManagement.php');
+require_once ('Model/User.php');
+require_once ('Model/UserSessionManagement.php');
 require_once ('phpsrc/WebsitePages.php');
-MemberSessionManagement::LogoutCurrentMember();
+UserSessionManagement::LogoutCurrentUser();
 ?>
 
 <!DOCTYPE HTML>
@@ -64,25 +65,24 @@ MemberSessionManagement::LogoutCurrentMember();
 
                         <div id="inputMargin">
                             <input type="hidden" name="action" value="update_member" />
-                            <input type="hidden" name="member_id" value="<?php echo $member_id; ?>">
+                            <input type="hidden" name="member_id" value="<?php echo $userID; ?>">
 <!--                            <input type="hidden" name="member_id" value="1">-->
-                            <input type="text" id="first_name" name="Fname" value="<?php echo $member['Fname']; ?>">
+                            <input type="text" id="first_name" name="firstname" value="<?php echo $user->getFirstname(); ?>">
                             <span id="first_name_error"></span><br>
-                            <input type="text" id="Last_name" name="Lname" value="<?php echo $member['Lname']; ?>">
+                            <input type="text" id="Last_name" name="lastname" value="<?php echo $user->getLastname(); ?>">
                             <span id="Last_name_error"></span><br>
-                            <input type="text" id="user_name" name="userName" value="<?php echo $member['userName']; ?> ">
+                            <input type="text" id="user_name" name="Username" value="<?php echo $user->getUsername(); ?> ">
                             <span id="user_name_error"></span><br>
 
-                            <input type="text" id="phone_number" name="PhoneNumber" value="<?php echo $member['PhoneNumber']; ?> ">
+                            <input type="text" id="phone_number" name="PhoneNumber" value="<?php echo $user->getPhoneNumber(); ?> ">
                             <span id="phone_number_error"></span><br>
-                            <input type="text" id="email1" name="memberEmail" value="<?php echo $member['memberEmail']; ?>">
+                            <input type="text" id="email1" name="email" value="<?php echo $user->getEmail(); ?>">
                             <span id="email2_error"></span><br>
 
-                            <input type="text" id="password1" name="memberPassword" value="<?php echo $member['memberPassword']; ?>">
+                            <input type="text" id="password1" name="Password" value="<?php echo $user->Password(); ?>">
                             <span id="password1_error"></span><br>
                             <div>
-                                <input type="text" class="hostaccess" name="hostAccess"  value="<?php echo $member['hostAccess']; ?>">
-                                <label for="hostaccess" class="hostaccess"> Host access</label><br>
+             
                             </div>
                         </div>
                         <div id="sameLine">

@@ -1,8 +1,10 @@
 <?php
-require_once ('Model/AdminSessionManagement.php');
+require_once ('Model/UserSessionManagement.php');
+require_once ('Model/UserAccessLevel.php');
+
 require_once ('phpsrc/WebsitePages.php');
 
-AdminSessionManagement::HandleAdminAccess();
+UserSessionManagement::HandleAdminUserAccess();
 ?>
 <!DOCTYPE HTML>
 <html lang=en>
@@ -109,23 +111,23 @@ AdminSessionManagement::HandleAdminAccess();
                                     <th> delete account</th>
                                 </tr>
 
-								<?php foreach ($members as $member) : ?>
+								<?php foreach ($users as $user) : ?>
 									<tr>
-										<td><?php echo $member->getmemberID(); ?></td>
-										<td><?php echo $member->getFname(); ?></td>
-										<td><?php echo $member->getLname(); ?></td>
-										<td><?php echo $member->getuserName(); ?></td>
-										<td><?php echo $member->getPhoneNumber(); ?></td>
-										<td><?php echo $member->getmemberEmail(); ?></td>
-										<td><?php echo $member->getmemberPassword(); ?></td>
-										<td><?php echo $member->gethostAccess(); ?></td>
+										<td><?php echo $user->getID(); ?></td>
+										<td><?php echo $user->getFirstname(); ?></td>
+										<td><?php echo $user->getLastname(); ?></td>
+										<td><?php echo $user->getuserName(); ?></td>
+										<td><?php echo $user->getPhoneNumber(); ?></td>
+										<td><?php echo $user->getEmail(); ?></td>
+										<td>********</td>
+										<td><?php echo UserAccessLevel::getLabelFromUser($user); ?></td>
 										<td> <form><input type="submit" value="view"></form></td>
 										<td><form action="<?php echo WebsitePages::adminIndex; ?>" method="post"
 												  id="delete_member_form">
 												<input type="hidden" name="action"
 													   value="delete_member">
 												<input type="hidden" name="member_id"
-													   value="<?php echo $member->getmemberID(); ?>">
+													   value="<?php echo $user->getId(); ?>">
 
 												<input type="submit" value="Delete">
 											</form></td>

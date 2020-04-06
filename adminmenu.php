@@ -1,8 +1,8 @@
 <?php
-require_once ('Model/AdminSessionManagement.php');
+require_once ('Model/UserSessionManagement.php');
 require_once ('phpsrc/WebsitePages.php');
 
-AdminSessionManagement::HandleAdminAccess();
+UserSessionManagement::HandleAdminUserAccess();
 ?>
 
 <html lang= en>

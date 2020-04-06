@@ -1,6 +1,6 @@
 <?php
 
-class events_db
+class EventRepository
 {
 
 	public static function getEvents()
@@ -14,20 +14,20 @@ class events_db
 		$events = array();
 		foreach ($statement as $row)
 		{
-			$events[] = events_db::Transform($row);
+			$events[] = EventRepository::Transform($row);
 		}
 		return $events;
 	}
 
-	protected static function Transform($row): events
+	protected static function Transform($row): Event
 	{
-		$event = new events($row['eventID'], $row['Title'], $row['Description'], $row['Date'], $row['Venue'], $row['Time'], $row['Location']);
+		$event = new Event($row['eventID'], $row['Title'], $row['Description'], $row['Date'], $row['Venue'], $row['Time'], $row['Location']);
 		$event->setImageName($row['imageLink']);
 		$event->setImageData($row['imageData']);
 		return $event;
 	}
 
-	public static function getEventById($event_id): ?events
+	public static function getEventById($event_id): ?Event
 	{
 		$db = Database::getDB();
 		$query = 'SELECT * FROM event
@@ -107,7 +107,7 @@ class events_db
 		return $row;
 	}
 
-	public static function update_event($event_id, $Title, $Description, $Venue, $Date, $Time, $Location)
+	public static function UpdateEvent($event_id, $Title, $Description, $Venue, $Date, $Time, $Location)
 	{
 		$db = Database::getDB();
 		$query = 'UPDATE event
@@ -141,7 +141,7 @@ class events_db
 		}
 	}
 
-	public static function UpdateEventImage(events $event)
+	public static function UpdateEventImage(Event $event)
 	{
 		$db = Database::getDB();
 		$query = 'UPDATE event
